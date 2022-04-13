@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/login/login_store.dart';
+import 'package:buscalar/app/modules/login/login_store.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
