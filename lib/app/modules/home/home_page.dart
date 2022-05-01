@@ -2,7 +2,6 @@
 
 import 'package:buscalar/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
@@ -26,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         toolbarHeight: 80,
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Container(
+        title: SizedBox(
           height: 52,
           child: TextField(
             decoration: InputDecoration(
@@ -106,7 +105,7 @@ class _HomePageState extends State<HomePage> {
             ]),
           ),
           SizedBox(height: 16),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height - 141,
             child: FlutterMap(
               options: MapOptions(
@@ -218,7 +217,9 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF930000),
-        onPressed: () {},
+        onPressed: () {
+          Modular.to.pushNamed('/register');
+        },
         child: Icon(Icons.add),
       ),
     );
