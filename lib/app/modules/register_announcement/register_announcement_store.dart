@@ -1,3 +1,4 @@
+import 'package:buscalar/app/classes/Database.dart';
 import 'package:mobx/mobx.dart';
 
 part 'register_announcement_store.g.dart';
@@ -10,7 +11,7 @@ abstract class _RegisterAnnouncementStoreBase with Store {
   int value = 0;
 
   @action
-  void increment() {
-    value++;
+  void save(immobile) {
+    Database().addImmobile(immobile.getImmobile);
   }
 }

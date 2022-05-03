@@ -28,11 +28,11 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
       ActionController(name: '_RegisterAnnouncementStoreBase');
 
   @override
-  void increment() {
+  void save(dynamic immobile) {
     final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
-        .startAction(name: '_RegisterAnnouncementStoreBase.increment');
+        .startAction(name: '_RegisterAnnouncementStoreBase.save');
     try {
-      return super.increment();
+      return super.save(immobile);
     } finally {
       _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
     }
