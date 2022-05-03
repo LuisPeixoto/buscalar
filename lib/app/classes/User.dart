@@ -28,6 +28,7 @@ class User {
     String images,
     String numberRoom,
     String numberBedroom,
+    String type,
     String area,
     String garage,
   ) {
@@ -41,6 +42,7 @@ class User {
       images,
       numberRoom,
       numberBedroom,
+      type,
       area,
       garage,
     );

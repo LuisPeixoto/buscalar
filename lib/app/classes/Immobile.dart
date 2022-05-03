@@ -8,6 +8,7 @@ class Immobile {
   String images;
   String numberRoom;
   String numberBedroom;
+  String type;
   String area;
   String garage;
 
@@ -21,6 +22,7 @@ class Immobile {
       this.images,
       this.numberRoom,
       this.numberBedroom,
+      this.type,
       this.area,
       this.garage);
 

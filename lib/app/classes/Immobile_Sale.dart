@@ -13,11 +13,12 @@ class Immobile_Sale extends Immobile {
       String images,
       String numberRoom,
       String numberBedroom,
+      String type,
       String area,
       String garage,
       this.price)
       : super(cep, city, borough, address, longitude, latitude, images,
-            numberRoom, numberBedroom, area, garage);
+            numberRoom, numberBedroom, type = 'sale', area, garage);
 
   double get getPrice => price;
   set setPrice(double price) => this.price = price;
@@ -31,4 +32,21 @@ class Immobile_Sale extends Immobile {
 
     return priceList;
   }
+
+  @override
+  Map<String, dynamic> get getImmobile => {
+        'cep': cep,
+        'city': city,
+        'borough': borough,
+        'address': address,
+        'longitude': longitude,
+        'latitude': latitude,
+        'images': images,
+        'numberRoom': numberRoom,
+        'numberBedroom': numberBedroom,
+        'type': type,
+        'area': area,
+        'garage': garage,
+        'price': price
+      };
 }

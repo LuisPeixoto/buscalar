@@ -1,7 +1,7 @@
 import 'package:buscalar/app/classes/Immobile.dart';
 
 class Immobile_Daily extends Immobile {
-  double price;
+  double priceDay;
 
   Immobile_Daily(
       String cep,
@@ -13,14 +13,32 @@ class Immobile_Daily extends Immobile {
       String images,
       String numberRoom,
       String numberBedroom,
+      String type,
       String area,
       String garage,
-      this.price)
+      this.priceDay)
       : super(cep, city, borough, address, longitude, latitude, images,
-            numberRoom, numberBedroom, area, garage);
+            numberRoom, numberBedroom, type = 'daily', area, garage);
 
-  double get getPrice => price;
-  set setPrice(double price) => this.price = price;
+  double get getPriceDay => priceDay;
+  set setPriceDay(double priceDay) => this.priceDay = priceDay;
+
+  @override
+  Map<String, dynamic> get getImmobile => {
+        'cep': cep,
+        'city': city,
+        'borough': borough,
+        'address': address,
+        'longitude': longitude,
+        'latitude': latitude,
+        'images': images,
+        'numberRoom': numberRoom,
+        'numberBedroom': numberBedroom,
+        'type': type,
+        'area': area,
+        'garage': garage,
+        'price': priceDay
+      };
 
   List<double> simulateFinancingPrice(double price) {
     List<double> priceList = [];
