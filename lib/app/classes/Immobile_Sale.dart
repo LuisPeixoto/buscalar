@@ -8,15 +8,16 @@ class Immobile_Sale extends Immobile {
       String city,
       String borough,
       String address,
-      String number,
+      String longitude,
+      String latitude,
       String images,
       String numberRoom,
       String numberBedroom,
       String area,
       String garage,
       this.price)
-      : super(cep, city, borough, address, number, images, numberRoom,
-            numberBedroom, area, garage);
+      : super(cep, city, borough, address, longitude, latitude, images,
+            numberRoom, numberBedroom, area, garage);
 
   double get getPrice => price;
   set setPrice(double price) => this.price = price;

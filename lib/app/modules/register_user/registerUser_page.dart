@@ -81,7 +81,7 @@ class RegisterUserPageState extends State<RegisterUserPage> {
                       ),
                     ),
                     onPressed: () {
-                      Modular.to.pushNamed('/home');
+                      store.increment();
                     },
                     child: Text('Cadastrar-se',
                         style: TextStyle(
