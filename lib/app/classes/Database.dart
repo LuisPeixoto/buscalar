@@ -15,8 +15,8 @@ class Database {
     return immobiles;
   }
 
-  void addImmobile(Map<String, dynamic> immobile) {
-    FirebaseFirestore.instance.collection('immobile').add(immobile);
+  Future<void> addImmobile(immobile) async {
+    await FirebaseFirestore.instance.collection('immobile').add(immobile);
   }
 
   void deleteImmobile(String id) {

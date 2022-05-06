@@ -1,16 +1,16 @@
 class Immobile {
-  String cep;
-  String city;
-  String borough;
-  String address;
-  String longitude;
-  String latitude;
-  String images;
-  String numberRoom;
-  String numberBedroom;
-  String type;
-  String area;
-  String garage;
+  String? cep;
+  String? city;
+  String? borough;
+  String? address;
+  String? longitude;
+  String? latitude;
+  String? images;
+  String? numberRoom;
+  String? numberBedroom;
+  String? type;
+  String? area;
+  String? garage;
 
   Immobile(
       this.cep,
@@ -26,17 +26,17 @@ class Immobile {
       this.area,
       this.garage);
 
-  String get getCep => cep;
-  String get getCity => city;
-  String get getBorough => borough;
-  String get getAddress => address;
-  String get getLongitude => longitude;
-  String get getLatitude => latitude;
-  String get getImages => images;
-  String get getNumberRoom => numberRoom;
-  String get getNumberBedroom => numberBedroom;
-  String get getArea => area;
-  String get getGarage => garage;
+  String? get getCep => cep;
+  String? get getCity => city;
+  String? get getBorough => borough;
+  String? get getAddress => address;
+  String? get getLongitude => longitude;
+  String? get getLatitude => latitude;
+  String? get getImages => images;
+  String? get getNumberRoom => numberRoom;
+  String? get getNumberBedroom => numberBedroom;
+  String? get getArea => area;
+  String? get getGarage => garage;
 
   set setCep(String cep) => this.cep = cep;
   set setCity(String city) => this.city = city;

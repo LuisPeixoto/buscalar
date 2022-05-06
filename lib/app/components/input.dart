@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class Input extends StatelessWidget {
   final String title;
   final IconData icon;
-  final Function(String?) onChanged;
+  final Function(String?)? onChanged;
+  final TextEditingController? controller;
 
   const Input({
     Key? key,
     required this.title,
     required this.icon,
-    required this.onChanged,
+    this.onChanged,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -18,6 +20,7 @@ class Input extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 32),
       child: TextField(
         onChanged: onChanged,
+        controller: controller,
         autofocus: true,
         obscureText: title.contains('Senha') ? true : false,
         focusNode: FocusNode(),

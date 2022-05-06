@@ -9,8 +9,8 @@ void main() {
   });
 
   test('increment count', () async {
-    expect(store.value, equals(0));
+    expect(store.address, equals(0));
     store.save;
-    expect(store.value, equals(1));
+    expect(store.address, equals(1));
   });
 }
