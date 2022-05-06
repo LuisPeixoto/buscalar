@@ -111,6 +111,8 @@ abstract class _RegisterAnnouncementStoreBase with Store {
         numberRoom, numberBedroom, 'dayly', area, numberGarage);
   }
 
+  //@action uploadImages(List<File> images) async {
+
   @action
   Future<void> save() async {
     await Database().addImmobile(getData().getImmobile);

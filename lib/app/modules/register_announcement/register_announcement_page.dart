@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:buscalar/app/components/button_small.dart';
 import 'package:buscalar/app/components/input.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -122,6 +123,41 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 onChanged: store.setGarage,
               ),
               SizedBox(height: 24),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 32),
+                child: Container(
+                  width: double.infinity,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        width: 5, color: Color.fromARGB(140, 147, 0, 0)),
+
+                    borderRadius: BorderRadius.circular(20),
+                    //color: Color(0xFFEBEBEB),
+                  ),
+                  child: Center(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ButtonSmall(
+                        title: 'Faca o upload da foto',
+                        onPress: store.save,
+                        icon: Icons.file_upload_outlined,
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'JPG e PNG, somente',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF949597)),
+                      ),
+                    ],
+                  )),
+                ),
+              ),
+              SizedBox(height: 24),
+
               Container(
                 width: double.infinity,
                 height: 59,
