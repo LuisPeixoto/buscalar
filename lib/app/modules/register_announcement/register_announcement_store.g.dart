@@ -178,6 +178,22 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
     });
   }
 
+  final _$imagesAnnouncementAtom =
+      Atom(name: '_RegisterAnnouncementStoreBase.imagesAnnouncement');
+
+  @override
+  List<String?>? get imagesAnnouncement {
+    _$imagesAnnouncementAtom.reportRead();
+    return super.imagesAnnouncement;
+  }
+
+  @override
+  set imagesAnnouncement(List<String?>? value) {
+    _$imagesAnnouncementAtom.reportWrite(value, super.imagesAnnouncement, () {
+      super.imagesAnnouncement = value;
+    });
+  }
+
   final _$getInformationFurCepAsyncAction =
       AsyncAction('_RegisterAnnouncementStoreBase.getInformationFurCep');
 
@@ -185,6 +201,14 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
   Future<void> getInformationFurCep(String? cep) {
     return _$getInformationFurCepAsyncAction
         .run(() => super.getInformationFurCep(cep));
+  }
+
+  final _$uploadImagesAsyncAction =
+      AsyncAction('_RegisterAnnouncementStoreBase.uploadImages');
+
+  @override
+  Future<void> uploadImages() {
+    return _$uploadImagesAsyncAction.run(() => super.uploadImages());
   }
 
   final _$saveAsyncAction = AsyncAction('_RegisterAnnouncementStoreBase.save');
@@ -330,6 +354,18 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
   }
 
   @override
+  void setImagesAnnouncement(List<String?>? imagesAnnouncement) {
+    final _$actionInfo =
+        _$_RegisterAnnouncementStoreBaseActionController.startAction(
+            name: '_RegisterAnnouncementStoreBase.setImagesAnnouncement');
+    try {
+      return super.setImagesAnnouncement(imagesAnnouncement);
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 cep: ${cep},
@@ -342,7 +378,8 @@ images: ${images},
 numberRoom: ${numberRoom},
 numberBedroom: ${numberBedroom},
 area: ${area},
-numberGarage: ${numberGarage}
+numberGarage: ${numberGarage},
+imagesAnnouncement: ${imagesAnnouncement}
     ''';
   }
 }

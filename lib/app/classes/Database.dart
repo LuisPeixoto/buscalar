@@ -1,4 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 
 class Database {
   List get getAllImmobile {
@@ -49,5 +53,21 @@ class Database {
 
   void getUser(String id) {
     FirebaseFirestore.instance.collection('users').doc(id).get();
+  }
+
+  Future<String> uploadImage(XFile image) async {
+    File? _photo;
+
+    final ref = FirebaseStorage.instance.ref('/images').child(
+        'buscalar-${DateTime.now().millisecondsSinceEpoch}${image.hashCode.toString()}');
+
+    if (image != null) {
+      _photo = File(image.path);
+      await ref.putFile(_photo);
+    }
+
+    print('uploading image: ${ref.getDownloadURL()}');
+
+    return await ref.getDownloadURL();
   }
 }

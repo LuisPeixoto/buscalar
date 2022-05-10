@@ -141,7 +141,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                     children: [
                       ButtonSmall(
                         title: 'Faca o upload da foto',
-                        onPress: store.save,
+                        onPress: store.uploadImages,
                         icon: Icons.file_upload_outlined,
                       ),
                       SizedBox(height: 8),
@@ -156,6 +156,39 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                   )),
                 ),
               ),
+              SizedBox(height: 24),
+
+              Observer(builder: (context) {
+                return store.imagesAnnouncement != null
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.symmetric(horizontal: 32),
+                        child: Row(
+                            children: store.imagesAnnouncement!
+                                .map(
+                                  (image) => Container(
+                                      width: 140,
+                                      height: 90,
+                                      margin: EdgeInsets.only(right: 16),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                      ),
+                                      child: ClipRRect(
+                                        child: SizedBox.fromSize(
+                                          child: Image.network(image.toString(),
+                                              fit: BoxFit.cover),
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                            10), // Image border
+                                      )),
+                                )
+                                .toList()),
+                      )
+                    : SizedBox(
+                        height: 0,
+                      );
+              }),
               SizedBox(height: 24),
 
               Container(

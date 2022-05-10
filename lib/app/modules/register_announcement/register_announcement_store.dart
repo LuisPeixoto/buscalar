@@ -1,9 +1,15 @@
+import 'package:path/path.dart';
+
+import 'dart:io';
 import 'package:buscalar/app/classes/Database.dart';
 import 'package:buscalar/app/classes/Immobile.dart';
 import 'package:buscalar/app/classes/Immobile_Daily.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:image/image.dart' as img;
 
 part 'register_announcement_store.g.dart';
 
@@ -43,6 +49,9 @@ abstract class _RegisterAnnouncementStoreBase with Store {
 
   @observable
   String? numberGarage;
+
+  @observable
+  List<String?>? imagesAnnouncement;
 
   @action
   void setCep(String? cep) {
@@ -106,12 +115,30 @@ abstract class _RegisterAnnouncementStoreBase with Store {
     return field1 != null && field1?.length == 8 ? field2 ?? '' : '';
   }
 
+  @action
+  void setImagesAnnouncement(List<String?>? imagesAnnouncement) =>
+      this.imagesAnnouncement = imagesAnnouncement;
+
   Immobile getData() {
     return Immobile(cep, city, borough, address, longitude, latitude, images,
         numberRoom, numberBedroom, 'dayly', area, numberGarage);
   }
 
-  //@action uploadImages(List<File> images) async {
+  @action
+  Future<void> uploadImages() async {
+    final ImagePicker _picker = ImagePicker();
+    final images = await _picker.pickMultiImage();
+    List<String> imagesList = [];
+
+    if (images != null) {
+      for (final image in images) {
+        final imageFile = await Database().uploadImage(image);
+        imagesList.add(imageFile);
+      }
+    }
+
+    setImagesAnnouncement(imagesList);
+  }
 
   @action
   Future<void> save() async {
