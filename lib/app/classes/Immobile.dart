@@ -5,7 +5,7 @@ class Immobile {
   String? address;
   String? longitude;
   String? latitude;
-  String? images;
+  List<String> images;
   String? numberRoom;
   String? numberBedroom;
   String? type;
@@ -32,7 +32,7 @@ class Immobile {
   String? get getAddress => address;
   String? get getLongitude => longitude;
   String? get getLatitude => latitude;
-  String? get getImages => images;
+  List<String> get getImages => images;
   String? get getNumberRoom => numberRoom;
   String? get getNumberBedroom => numberBedroom;
   String? get getArea => area;
@@ -44,7 +44,7 @@ class Immobile {
   set setAddress(String address) => this.address = address;
   set setLongitude(String longitude) => this.longitude = longitude;
   set setLatitude(String latitude) => this.latitude = latitude;
-  set setImages(String images) => this.images = images;
+  set setImages(List<String> images) => this.images = images;
   set setNumberRoom(String numberRoom) => this.numberRoom = numberRoom;
   set setNumberBedroom(String numberBedroom) =>
       this.numberBedroom = numberBedroom;

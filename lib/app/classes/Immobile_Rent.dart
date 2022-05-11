@@ -11,7 +11,7 @@ class Immobile_Rent extends Immobile {
       String address,
       String longitude,
       String latitude,
-      String images,
+      List<String> images,
       String numberRoom,
       String numberBedroom,
       String type,

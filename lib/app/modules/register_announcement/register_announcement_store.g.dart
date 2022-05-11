@@ -103,13 +103,13 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
   final _$imagesAtom = Atom(name: '_RegisterAnnouncementStoreBase.images');
 
   @override
-  String? get images {
+  List<String>? get images {
     _$imagesAtom.reportRead();
     return super.images;
   }
 
   @override
-  set images(String? value) {
+  set images(List<String>? value) {
     _$imagesAtom.reportWrite(value, super.images, () {
       super.images = value;
     });
@@ -288,7 +288,7 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
   }
 
   @override
-  void setImages(String? images) {
+  void setImages(List<String>? images) {
     final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
         .startAction(name: '_RegisterAnnouncementStoreBase.setImages');
     try {

@@ -36,7 +36,7 @@ abstract class _RegisterAnnouncementStoreBase with Store {
   String? latitude;
 
   @observable
-  String? images;
+  List<String>? images;
 
   @observable
   String? numberRoom;
@@ -95,7 +95,7 @@ abstract class _RegisterAnnouncementStoreBase with Store {
   void setLatitude(String? latitude) => this.latitude = latitude;
 
   @action
-  void setImages(String? images) => this.images = images;
+  void setImages(List<String>? images) => this.images = images;
 
   @action
   void setNumberRoom(String? numberRoom) => this.numberRoom = numberRoom;
@@ -120,8 +120,8 @@ abstract class _RegisterAnnouncementStoreBase with Store {
       this.imagesAnnouncement = imagesAnnouncement;
 
   Immobile getData() {
-    return Immobile(cep, city, borough, address, longitude, latitude, images,
-        numberRoom, numberBedroom, 'dayly', area, numberGarage);
+    return Immobile(cep, city, borough, address, longitude, latitude,
+        images ?? [], numberRoom, numberBedroom, 'dayly', area, numberGarage);
   }
 
   @action
@@ -137,7 +137,7 @@ abstract class _RegisterAnnouncementStoreBase with Store {
       }
     }
 
-    setImagesAnnouncement(imagesList);
+    setImages(imagesList);
   }
 
   @action

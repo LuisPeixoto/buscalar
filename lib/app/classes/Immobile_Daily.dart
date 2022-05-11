@@ -10,7 +10,7 @@ class Immobile_Daily extends Immobile {
       String address,
       String longitude,
       String latitude,
-      String images,
+      List<String> images,
       String numberRoom,
       String numberBedroom,
       String type,

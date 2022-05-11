@@ -123,6 +123,11 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 onChanged: store.setGarage,
               ),
               SizedBox(height: 24),
+              Text(
+                'Adicione fotos do imovel',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+              ),
+              SizedBox(height: 24),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 32),
                 child: Container(
@@ -159,12 +164,12 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
               SizedBox(height: 24),
 
               Observer(builder: (context) {
-                return store.imagesAnnouncement != null
+                return store.images != null
                     ? SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.symmetric(horizontal: 32),
                         child: Row(
-                            children: store.imagesAnnouncement!
+                            children: store.images!
                                 .map(
                                   (image) => Container(
                                       width: 140,
