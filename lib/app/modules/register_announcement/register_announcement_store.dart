@@ -53,6 +53,21 @@ abstract class _RegisterAnnouncementStoreBase with Store {
   @observable
   List<String?>? imagesAnnouncement;
 
+  @observable
+  String? description;
+
+  @observable
+  String? numberPhone;
+
+  @observable
+  String? userId;
+
+  @observable
+  String? type;
+
+  @observable
+  String? price;
+
   @action
   void setCep(String? cep) {
     this.cep = cep;
@@ -111,17 +126,48 @@ abstract class _RegisterAnnouncementStoreBase with Store {
   void setGarage(String? numberGarage) => this.numberGarage = numberGarage;
 
   @action
+  void setDescription(String? description) => this.description = description;
+
+  @action
+  void setNumberPhone(String? numberPhone) => this.numberPhone = numberPhone;
+
+  @action
+  void setUserId(String? userId) => this.userId = userId;
+
+  @action
   String getInformation(field1, field2) {
     return field1 != null && field1?.length == 8 ? field2 ?? '' : '';
   }
+
+  @action
+  void setType(String? type) => this.type = type;
+
+  @action
+  void setPrice(String? price) => this.price = price;
 
   @action
   void setImagesAnnouncement(List<String?>? imagesAnnouncement) =>
       this.imagesAnnouncement = imagesAnnouncement;
 
   Immobile getData() {
-    return Immobile(cep, city, borough, address, longitude, latitude,
-        images ?? [], numberRoom, numberBedroom, 'dayly', area, numberGarage);
+    return Immobile(
+      cep,
+      city,
+      borough,
+      address,
+      longitude,
+      latitude,
+      images ?? [],
+      numberRoom,
+      numberBedroom,
+      type,
+      area,
+      numberGarage,
+      description,
+      '22 9900-0000',
+      '1',
+      price,
+    );
   }
 
   @action

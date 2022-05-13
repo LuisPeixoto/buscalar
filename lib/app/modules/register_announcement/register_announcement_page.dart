@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:buscalar/app/components/button_small.dart';
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/select.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/register_announcement/register_announcement_store.dart';
@@ -42,24 +43,14 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
               ),
               SizedBox(height: 24),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon:
-                        Icon(Icons.home_work_rounded, color: Color(0xFF949597)),
-                    suffixIcon: Icon(Icons.keyboard_arrow_down_outlined,
-                        color: Color(0xFF949597)),
-                    filled: true,
-                    fillColor: Color(0xFFEBEBEB),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(8)),
-                    hintStyle: TextStyle(color: Color(0xFF949597)),
-                    hintText: 'Selecione o tipo do imovel',
-                  ),
-                ),
-              ),
+              Observer(builder: (context) {
+                return Select(
+                    title: 'Selecione o tipo de anuncio',
+                    icon: Icons.home_work_rounded,
+                    value: store.type,
+                    onChanged: store.setType,
+                    items: const ['Aluguel', 'Venda']);
+              }),
               SizedBox(height: 24),
               Observer(builder: (context) {
                 return Input(
@@ -122,6 +113,22 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 icon: Icons.car_repair_rounded,
                 onChanged: store.setGarage,
               ),
+              SizedBox(height: 24),
+              Input(
+                title: 'Descrição',
+                icon: Icons.description_rounded,
+                onChanged: store.setDescription,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+              ),
+              SizedBox(height: 24),
+              Observer(builder: (context) {
+                return Input(
+                  title: store.type == 'Aluguel' ? 'Valor mensal' : 'Valor',
+                  icon: Icons.attach_money_outlined,
+                  onChanged: store.setPrice,
+                );
+              }),
               SizedBox(height: 24),
               Text(
                 'Adicione fotos do imovel',

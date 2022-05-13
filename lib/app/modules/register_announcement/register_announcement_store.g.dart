@@ -194,6 +194,68 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
     });
   }
 
+  final _$descriptionAtom =
+      Atom(name: '_RegisterAnnouncementStoreBase.description');
+
+  @override
+  String? get description {
+    _$descriptionAtom.reportRead();
+    return super.description;
+  }
+
+  @override
+  set description(String? value) {
+    _$descriptionAtom.reportWrite(value, super.description, () {
+      super.description = value;
+    });
+  }
+
+  final _$numberPhoneAtom =
+      Atom(name: '_RegisterAnnouncementStoreBase.numberPhone');
+
+  @override
+  String? get numberPhone {
+    _$numberPhoneAtom.reportRead();
+    return super.numberPhone;
+  }
+
+  @override
+  set numberPhone(String? value) {
+    _$numberPhoneAtom.reportWrite(value, super.numberPhone, () {
+      super.numberPhone = value;
+    });
+  }
+
+  final _$userIdAtom = Atom(name: '_RegisterAnnouncementStoreBase.userId');
+
+  @override
+  String? get userId {
+    _$userIdAtom.reportRead();
+    return super.userId;
+  }
+
+  @override
+  set userId(String? value) {
+    _$userIdAtom.reportWrite(value, super.userId, () {
+      super.userId = value;
+    });
+  }
+
+  final _$typeAtom = Atom(name: '_RegisterAnnouncementStoreBase.type');
+
+  @override
+  String? get type {
+    _$typeAtom.reportRead();
+    return super.type;
+  }
+
+  @override
+  set type(String? value) {
+    _$typeAtom.reportWrite(value, super.type, () {
+      super.type = value;
+    });
+  }
+
   final _$getInformationFurCepAsyncAction =
       AsyncAction('_RegisterAnnouncementStoreBase.getInformationFurCep');
 
@@ -343,11 +405,55 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
   }
 
   @override
+  void setDescription(String? description) {
+    final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
+        .startAction(name: '_RegisterAnnouncementStoreBase.setDescription');
+    try {
+      return super.setDescription(description);
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setNumberPhone(String? numberPhone) {
+    final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
+        .startAction(name: '_RegisterAnnouncementStoreBase.setNumberPhone');
+    try {
+      return super.setNumberPhone(numberPhone);
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setUserId(String? userId) {
+    final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
+        .startAction(name: '_RegisterAnnouncementStoreBase.setUserId');
+    try {
+      return super.setUserId(userId);
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String getInformation(dynamic field1, dynamic field2) {
     final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
         .startAction(name: '_RegisterAnnouncementStoreBase.getInformation');
     try {
       return super.getInformation(field1, field2);
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setType(String? type) {
+    final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
+        .startAction(name: '_RegisterAnnouncementStoreBase.setType');
+    try {
+      return super.setType(type);
     } finally {
       _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -379,7 +485,11 @@ numberRoom: ${numberRoom},
 numberBedroom: ${numberBedroom},
 area: ${area},
 numberGarage: ${numberGarage},
-imagesAnnouncement: ${imagesAnnouncement}
+imagesAnnouncement: ${imagesAnnouncement},
+description: ${description},
+numberPhone: ${numberPhone},
+userId: ${userId},
+type: ${type}
     ''';
   }
 }
