@@ -5,6 +5,8 @@ class Input extends StatelessWidget {
   final IconData icon;
   final Function(String?)? onChanged;
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  final int? maxLines;
 
   const Input({
     Key? key,
@@ -12,6 +14,8 @@ class Input extends StatelessWidget {
     required this.icon,
     this.onChanged,
     this.controller,
+    this.keyboardType,
+    this.maxLines = 1,
   }) : super(key: key);
 
   @override
@@ -21,6 +25,8 @@ class Input extends StatelessWidget {
       child: TextField(
         onChanged: onChanged,
         controller: controller,
+        keyboardType: keyboardType,
+        maxLines: maxLines,
         autofocus: true,
         obscureText: title.contains('Senha') ? true : false,
         focusNode: FocusNode(),
