@@ -31,6 +31,10 @@ class User {
     String type,
     String area,
     String garage,
+    String description,
+    String numberPhone,
+    String userId,
+    String price,
   ) {
     Immobile immobile = Immobile(
       cep,
@@ -45,6 +49,10 @@ class User {
       type,
       area,
       garage,
+      description,
+      numberPhone,
+      userId,
+      price,
     );
   }
 }

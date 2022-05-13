@@ -16,9 +16,28 @@ class Immobile_Daily extends Immobile {
       String type,
       String area,
       String garage,
+      String description,
+      String numberPhone,
+      String userId,
+      String price,
       this.priceDay)
-      : super(cep, city, borough, address, longitude, latitude, images,
-            numberRoom, numberBedroom, type = 'daily', area, garage);
+      : super(
+            cep,
+            city,
+            borough,
+            address,
+            longitude,
+            latitude,
+            images,
+            numberRoom,
+            numberBedroom,
+            type = 'daily',
+            area,
+            garage,
+            description,
+            numberPhone,
+            userId,
+            price);
 
   double get getPriceDay => priceDay;
   set setPriceDay(double priceDay) => this.priceDay = priceDay;
@@ -37,7 +56,11 @@ class Immobile_Daily extends Immobile {
         'type': type,
         'area': area,
         'garage': garage,
-        'price': priceDay
+        'price': priceDay,
+        'description': description,
+        'numberPhone': numberPhone,
+        'userId': userId,
+        'price': price
       };
 
   List<double> simulateFinancingPrice(double price) {

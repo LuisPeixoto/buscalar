@@ -1,7 +1,7 @@
 import 'package:buscalar/app/classes/Immobile.dart';
 
 class Immobile_Sale extends Immobile {
-  double price;
+  double price_total;
 
   Immobile_Sale(
       String cep,
@@ -16,12 +16,31 @@ class Immobile_Sale extends Immobile {
       String type,
       String area,
       String garage,
-      this.price)
-      : super(cep, city, borough, address, longitude, latitude, images,
-            numberRoom, numberBedroom, type = 'sale', area, garage);
+      String description,
+      String numberPhone,
+      String userId,
+      String price,
+      this.price_total)
+      : super(
+            cep,
+            city,
+            borough,
+            address,
+            longitude,
+            latitude,
+            images,
+            numberRoom,
+            numberBedroom,
+            type = 'sale',
+            area,
+            garage,
+            description,
+            numberPhone,
+            userId,
+            price);
 
-  double get getPrice => price;
-  set setPrice(double price) => this.price = price;
+  double get getPriceTotal => price_total;
+  set setPriceTotal(double price) => this.price_total = price_total;
 
   List<double> simulateFinancingPrice(double price) {
     List<double> priceList = [];
@@ -47,6 +66,9 @@ class Immobile_Sale extends Immobile {
         'type': type,
         'area': area,
         'garage': garage,
-        'price': price
+        'price': price,
+        'description': description,
+        'numberPhone': numberPhone,
+        'userId': userId
       };
 }

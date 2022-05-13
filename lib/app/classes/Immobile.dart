@@ -11,6 +11,10 @@ class Immobile {
   String? type;
   String? area;
   String? garage;
+  String? description;
+  String? numberPhone;
+  String? userId;
+  String? price;
 
   Immobile(
       this.cep,
@@ -24,7 +28,11 @@ class Immobile {
       this.numberBedroom,
       this.type,
       this.area,
-      this.garage);
+      this.garage,
+      this.description,
+      this.numberPhone,
+      this.userId,
+      this.price);
 
   String? get getCep => cep;
   String? get getCity => city;
@@ -37,6 +45,10 @@ class Immobile {
   String? get getNumberBedroom => numberBedroom;
   String? get getArea => area;
   String? get getGarage => garage;
+  String? get getDescription => description;
+  String? get getNumberPhone => numberPhone;
+  String? get getUserId => userId;
+  String? get getPrice => price;
 
   set setCep(String cep) => this.cep = cep;
   set setCity(String city) => this.city = city;
@@ -50,6 +62,10 @@ class Immobile {
       this.numberBedroom = numberBedroom;
   set setArea(String area) => this.area = area;
   set setGarage(String garage) => this.garage = garage;
+  set setDescription(String description) => this.description = description;
+  set setNumberPhone(String numberPhone) => this.numberPhone = numberPhone;
+  set setUserId(String userId) => this.userId = userId;
+  set setPrice(String price) => this.price = price;
 
   Map<String, dynamic> get getImmobile => {
         'cep': cep,
@@ -63,5 +79,10 @@ class Immobile {
         'numberBedroom': numberBedroom,
         'area': area,
         'garage': garage,
+        'description': description,
+        'numberPhone': numberPhone,
+        'userId': userId,
+        'type': type,
+        'price': price
       };
 }

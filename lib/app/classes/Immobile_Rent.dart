@@ -17,10 +17,29 @@ class Immobile_Rent extends Immobile {
       String type,
       String area,
       String garage,
+      String description,
+      String numberPhone,
+      String userId,
+      String price,
       this.price_month,
       this.price_year)
-      : super(cep, city, borough, address, longitude, latitude, images,
-            numberRoom, numberBedroom, type = 'rent', area, garage);
+      : super(
+            cep,
+            city,
+            borough,
+            address,
+            longitude,
+            latitude,
+            images,
+            numberRoom,
+            numberBedroom,
+            type = 'rent',
+            area,
+            garage,
+            description,
+            numberPhone,
+            userId,
+            price);
 
   double get getPriceMonth => price_month;
   double get getPriceYear => price_year;
@@ -43,6 +62,9 @@ class Immobile_Rent extends Immobile {
         'area': area,
         'garage': garage,
         'price_month': price_month,
-        'price_year': price_year
+        'price_year': price_year,
+        'description': description,
+        'numberPhone': numberPhone,
+        'userId': userId
       };
 }
