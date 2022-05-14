@@ -51,8 +51,9 @@ class Database {
     FirebaseFirestore.instance.collection('users').doc(id).update(user);
   }
 
-  void getUser(String id) {
-    FirebaseFirestore.instance.collection('users').doc(id).get();
+  Future<DocumentSnapshot<Map<String, dynamic>>> getUser(String email) {
+    var teste = FirebaseFirestore.instance.collection('users').doc(email).get();
+    return teste;
   }
 
   Future<String> uploadImage(XFile image) async {

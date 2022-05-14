@@ -1,3 +1,4 @@
+import 'package:buscalar/app/classes/User.dart';
 import 'package:mobx/mobx.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -7,15 +8,30 @@ class RegisterUserStore = _RegisterUserStoreBase with _$RegisterUserStore;
 
 abstract class _RegisterUserStoreBase with Store {
   @observable
-  int value = 0;
+  String? name;
+
+  @observable
+  String? email;
+
+  @observable
+  String? phoneNumber;
+
+  @observable
+  String? password;
 
   @action
-  void increment() {
-    final immobile = FirebaseFirestore.instance.collection('immobile').get();
-    immobile.then((value) {
-      value.docs.forEach((element) {
-        print(element.data());
-      });
-    });
+  void setName(String? value) => name = value;
+  void setEmail(String? value) => email = value;
+  void setPhoneNumber(String? value) => phoneNumber = value;
+  void setPassword(String? value) => password = value;
+
+  @action
+  Future<void> registerUser() async {
+    var user = User(
+        name: name,
+        email: email!,
+        phoneNumber: phoneNumber,
+        password: password!);
+    await user.register();
   }
 }

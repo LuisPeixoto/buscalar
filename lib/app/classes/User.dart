@@ -1,22 +1,60 @@
+import 'package:buscalar/app/classes/Database.dart';
 import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class User {
-  String name;
+  String? name;
   String email;
-  String phoneNumber;
+  String? phoneNumber;
   String password;
 
-  User(this.name, this.email, this.phoneNumber, this.password);
+  User(
+      {this.name,
+      required this.email,
+      this.phoneNumber,
+      required this.password});
 
-  String get _getName => name;
+  String get _getName => name ?? '';
   String get _getEmail => email;
-  String get _getPhoneNumber => phoneNumber;
+  String get _getPhoneNumber => phoneNumber ?? '';
   String get _getPassword => password;
 
-  set _setName(String name) => this.name = name;
-  set _setEmail(String email) => this.email = email;
-  set _setPhoneNumber(String phoneNumber) => this.phoneNumber = phoneNumber;
-  set _setPassword(String password) => this.password = password;
+  void setName(String name) => this.name = name;
+  void setEmail(String email) => this.email = email;
+  void setPhoneNumber(String phoneNumber) => this.phoneNumber = phoneNumber;
+  void setPassword(String password) => this.password = password;
+
+  Future<void> authenticate() async {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((_) {
+      Database().getUser(email).then((user) {
+        //setName(user.name);
+        print('teste:$user');
+        //setPhoneNumber(user.phoneNumber);
+      });
+    }).catchError((error) {
+      print(error);
+    });
+
+    //return auth;
+  }
+
+  Future<void> register() async {
+    FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then(
+      (user) {
+        Database().addUser(getUser);
+      },
+    );
+  }
+
+  Map<String, dynamic> get getUser => {
+        'name': name,
+        'email': email,
+        'phoneNumber': phoneNumber,
+      };
 
   void _create_announcement(
     String cep,

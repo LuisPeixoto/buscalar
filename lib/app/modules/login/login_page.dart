@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buscalar/app/components/input.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/login/login_store.dart';
 import 'package:flutter/material.dart';
@@ -29,40 +30,16 @@ class LoginPageState extends State<LoginPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
             ),
             SizedBox(height: 24),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: TextField(
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color(0xFFEBEBEB),
-                  prefixIcon:
-                      Icon(Icons.email_rounded, color: Color(0xFF949597)),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(8)),
-                  hintStyle: TextStyle(color: Color(0xFF949597)),
-                  hintText: 'Email',
-                ),
-              ),
+            Input(
+              title: 'Email',
+              icon: Icons.email_rounded,
+              onChanged: store.setEmail,
             ),
             SizedBox(height: 24),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: TextField(
-                decoration: InputDecoration(
-                  prefixIcon:
-                      Icon(Icons.lock_rounded, color: Color(0xFF949597)),
-                  suffixIcon: Icon(Icons.visibility_off_rounded,
-                      color: Color(0xFF949597)),
-                  filled: true,
-                  fillColor: Color(0xFFEBEBEB),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(8)),
-                  hintStyle: TextStyle(color: Color(0xFF949597)),
-                  hintText: 'Senha',
-                ),
-              ),
+            Input(
+              title: 'Senha',
+              icon: Icons.lock_rounded,
+              onChanged: store.setPassword,
             ),
             SizedBox(height: 24),
             Container(
@@ -79,9 +56,7 @@ class LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  onPressed: () {
-                    Modular.to.pushNamed('/home');
-                  },
+                  onPressed: store.login,
                   child: Text('Login',
                       style: TextStyle(
                           fontSize: 21,
@@ -90,34 +65,23 @@ class LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 24),
             Text(
-              'OU',
+              'Não possui uma conta?',
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w300,
                   color: Color(0xFF797575)),
             ),
-            SizedBox(height: 24),
-            Container(
-              width: double.infinity,
-              height: 59,
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.black87,
-                    primary: Color(0xFF930000),
-                    minimumSize: Size(88, 36),
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
+            TextButton(
+                onPressed: () {
+                  Modular.to.pushNamed('/registerUser');
+                },
+                child: Text(
+                  'Cadastra-se',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
                   ),
-                  onPressed: null,
-                  child: Text('Cadastra-se',
-                      style: TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.w300,
-                          color: Color.fromARGB(255, 132, 132, 132)))),
-            ),
+                ))
           ],
         ),
       ),

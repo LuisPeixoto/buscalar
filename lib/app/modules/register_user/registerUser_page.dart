@@ -34,37 +34,21 @@ class RegisterUserPageState extends State<RegisterUserPage> {
               Input(
                   title: 'Nome completo',
                   icon: Icons.person,
-                  onChanged: (value) {
-                    //store.name = value;
-                  }),
+                  onChanged: store.setName),
               SizedBox(height: 24),
               Input(
-                  title: 'Email',
-                  icon: Icons.email,
-                  onChanged: (value) {
-                    //store.name = value;
-                  }),
+                  title: 'Email', icon: Icons.email, onChanged: store.setEmail),
               SizedBox(height: 24),
               Input(
-                  title: 'Whatsapp',
-                  icon: Icons.whatsapp,
-                  onChanged: (value) {
-                    //store.name = value;
-                  }),
+                title: 'Whatsapp',
+                icon: Icons.whatsapp,
+                onChanged: store.setPhoneNumber,
+              ),
               SizedBox(height: 24),
               Input(
                   title: 'Senha',
                   icon: Icons.password,
-                  onChanged: (value) {
-                    //store.name = value;
-                  }),
-              SizedBox(height: 24),
-              Input(
-                  title: 'Repita a Senha',
-                  icon: Icons.password,
-                  onChanged: (value) {
-                    //store.name = value;
-                  }),
+                  onChanged: store.setPassword),
               SizedBox(height: 24),
               Container(
                 width: double.infinity,
@@ -81,7 +65,7 @@ class RegisterUserPageState extends State<RegisterUserPage> {
                       ),
                     ),
                     onPressed: () {
-                      store.increment();
+                      store.registerUser();
                     },
                     child: Text('Cadastrar-se',
                         style: TextStyle(

@@ -256,6 +256,21 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
     });
   }
 
+  final _$priceAtom = Atom(name: '_RegisterAnnouncementStoreBase.price');
+
+  @override
+  String? get price {
+    _$priceAtom.reportRead();
+    return super.price;
+  }
+
+  @override
+  set price(String? value) {
+    _$priceAtom.reportWrite(value, super.price, () {
+      super.price = value;
+    });
+  }
+
   final _$getInformationFurCepAsyncAction =
       AsyncAction('_RegisterAnnouncementStoreBase.getInformationFurCep');
 
@@ -460,6 +475,17 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
   }
 
   @override
+  void setPrice(String? price) {
+    final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
+        .startAction(name: '_RegisterAnnouncementStoreBase.setPrice');
+    try {
+      return super.setPrice(price);
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setImagesAnnouncement(List<String?>? imagesAnnouncement) {
     final _$actionInfo =
         _$_RegisterAnnouncementStoreBaseActionController.startAction(
@@ -489,7 +515,8 @@ imagesAnnouncement: ${imagesAnnouncement},
 description: ${description},
 numberPhone: ${numberPhone},
 userId: ${userId},
-type: ${type}
+type: ${type},
+price: ${price}
     ''';
   }
 }
