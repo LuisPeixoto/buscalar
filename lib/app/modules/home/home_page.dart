@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 16),
           SizedBox(
-            height: MediaQuery.of(context).size.height - 141,
+            height: MediaQuery.of(context).size.height - 200,
             child: FlutterMap(
               options: MapOptions(
                 center: latLng.LatLng(-21.758991, -41.319724),
@@ -124,7 +124,10 @@ class _HomePageState extends State<HomePage> {
                       width: 185,
                       height: 185,
                       point: latLng.LatLng(-21.758991, -41.319724),
-                      builder: (ctx) => Container(
+                      builder: (ctx) => TextButton(
+                        onPressed: () {
+                          Modular.to.pushNamed('/announcemnt');
+                        },
                         child: Image(image: AssetImage('assets/example1.png')),
                       ),
                     ),
@@ -215,12 +218,37 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt),
+            label: 'Lista',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Sobre',
+          ),
+        ],
+        //currentIndex: _selectedIndex,
+        selectedItemColor: Color(0xFF930000),
+        //onTap: _onItemTapped,
+      ),
+      floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF930000),
+        label: Text('Criar anúncio'),
         onPressed: () {
           Modular.to.pushNamed('/register');
         },
-        child: Icon(Icons.add),
+        icon: Icon(Icons.add),
       ),
     );
   }

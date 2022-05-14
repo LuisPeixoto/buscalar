@@ -73,7 +73,7 @@ mixin _$RegisterUserStore on _RegisterUserStoreBase, Store {
       AsyncAction('_RegisterUserStoreBase.registerUser');
 
   @override
-  Future registerUser() {
+  Future<void> registerUser() {
     return _$registerUserAsyncAction.run(() => super.registerUser());
   }
 
