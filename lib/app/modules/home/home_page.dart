@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     if (index == 0) {
       Modular.to.pushReplacementNamed('/home');
     } else if (index == 1) {
-      Modular.to.pushReplacementNamed('/register');
+      Modular.to.pushReplacementNamed('/list-announcemnt');
     } else if (index == 2) {
       Modular.to.pushReplacementNamed('/announcement');
     } else if (index == 3) {

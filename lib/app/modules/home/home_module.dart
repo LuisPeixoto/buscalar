@@ -2,6 +2,8 @@ import 'package:buscalar/app/modules/about/about_page.dart';
 import 'package:buscalar/app/modules/about/about_store.dart';
 import 'package:buscalar/app/modules/announcement/announcement_page.dart';
 import 'package:buscalar/app/modules/announcement/announcement_store.dart';
+import 'package:buscalar/app/modules/list_announcement/listAnnouncement_page.dart';
+import 'package:buscalar/app/modules/list_announcement/listAnnouncement_store.dart';
 import 'package:buscalar/app/modules/register_announcement/register_announcement_store.dart';
 import 'package:buscalar/app/modules/register_announcement/register_announcement_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -15,6 +17,7 @@ class HomeModule extends Module {
     Bind.lazySingleton((i) => RegisterAnnouncementStore()),
     Bind.lazySingleton((i) => AnnouncementStore()),
     Bind.lazySingleton((i) => AboutStore()),
+    Bind.lazySingleton((i) => ListAnnouncementStore()),
   ];
 
   @override
@@ -22,6 +25,7 @@ class HomeModule extends Module {
     ChildRoute(Modular.initialRoute, child: (_, args) => HomePage()),
     ChildRoute('/register', child: (_, args) => RegisterAnnouncementPage()),
     ChildRoute('/announcemnt', child: (_, args) => AnnouncementPage()),
+    ChildRoute('/list-announcemnt', child: (_, args) => ListAnnouncementPage()),
     ChildRoute('/about', child: (_, args) => AboutPage()),
   ];
 }
