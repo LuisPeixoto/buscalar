@@ -16,6 +16,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomeStore store = Modular.get();
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    if (index == 0) {
+      Modular.to.pushReplacementNamed('/home');
+    } else if (index == 1) {
+      Modular.to.pushReplacementNamed('/register');
+    } else if (index == 2) {
+      Modular.to.pushReplacementNamed('/announcement');
+    } else if (index == 3) {
+      Modular.to.pushReplacementNamed('/about');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +253,7 @@ class _HomePageState extends State<HomePage> {
         ],
         //currentIndex: _selectedIndex,
         selectedItemColor: Color(0xFF930000),
-        //onTap: _onItemTapped,
+        onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF930000),

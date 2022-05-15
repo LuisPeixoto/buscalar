@@ -79,6 +79,8 @@ flutter:
     - assets/example1.png
     - assets/example2.png
     - assets/example3.png
+    - assets/uenf.png
+    - assets/cc.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
