@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     } else if (index == 1) {
       Modular.to.pushReplacementNamed('/list-announcemnt');
     } else if (index == 2) {
-      Modular.to.pushReplacementNamed('/announcement');
+      Modular.to.pushReplacementNamed('/user-profile');
     } else if (index == 3) {
       Modular.to.pushReplacementNamed('/about');
     }
