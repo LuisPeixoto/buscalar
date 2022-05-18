@@ -24,10 +24,48 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  final _$immobilesAtom = Atom(name: 'HomeStoreBase.immobiles');
+
+  @override
+  List<Immobile> get immobiles {
+    _$immobilesAtom.reportRead();
+    return super.immobiles;
+  }
+
+  @override
+  set immobiles(List<Immobile> value) {
+    _$immobilesAtom.reportWrite(value, super.immobiles, () {
+      super.immobiles = value;
+    });
+  }
+
+  final _$getAllImmobilesAsyncAction =
+      AsyncAction('HomeStoreBase.getAllImmobiles');
+
+  @override
+  Future<void> getAllImmobiles() {
+    return _$getAllImmobilesAsyncAction.run(() => super.getAllImmobiles());
+  }
+
+  final _$HomeStoreBaseActionController =
+      ActionController(name: 'HomeStoreBase');
+
+  @override
+  void setImmobiles(List<Immobile> value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setImmobiles');
+    try {
+      return super.setImmobiles(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-counter: ${counter}
+counter: ${counter},
+immobiles: ${immobiles}
     ''';
   }
 }

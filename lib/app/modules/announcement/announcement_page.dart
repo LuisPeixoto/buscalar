@@ -1,3 +1,4 @@
+import 'package:buscalar/app/classes/Immobile.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/announcement/announcement_store.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,9 @@ class AnnouncementPageState extends State<AnnouncementPage> {
 
   @override
   Widget build(BuildContext context) {
+    Immobile immobile = store.immobile;
+    var images = immobile.images!.isEmpty ? [''] : immobile.images;
+    var price = 'R\$ ${immobile.price}';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -46,11 +50,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Row(
-                  children: [
-                'https://mapio.net/images-immo-detalhe/3249849/casa-de-condominio-com-3-quartos-a-venda-300-m2-por-r-1350000-horto-municipal-campos-dos-goytacazes-rj-img-0.jpeg',
-                'https://http2.mlstatic.com/D_NQ_NP_627985-MLB28531587079_102018-W.jpg',
-                'https://mapio.net/images-immo-detalhe/3289984/casa-de-condominio-com-3-quartos-para-alugar-por-r-4000mes-parque-rodoviario-campos-dos-goytacazes-rj-img-0.jpeg',
-              ]
+                  children: images!
                       .map(
                         (image) => Container(
                             width: MediaQuery.of(context).size.width - 48,
@@ -78,7 +78,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Aluguel',
+                      immobile.type ?? '',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 24,
@@ -88,7 +88,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      'Pelinca, Campos dos goytacazes, RJ',
+                      '${immobile.borough}, ${immobile.city}',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 18,
@@ -101,7 +101,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                       children: [
                         Expanded(
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
                                 'Quartos',
                                 textAlign: TextAlign.left,
@@ -113,7 +113,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                '4',
+                                '${immobile.numberRoom}',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 18,
@@ -126,7 +126,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                         ),
                         Expanded(
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
                                 'Banheiros',
                                 textAlign: TextAlign.left,
@@ -138,7 +138,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                '4',
+                                '${immobile.numberBedroom}',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 18,
@@ -151,7 +151,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                         ),
                         Expanded(
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
                                 'Garagem',
                                 textAlign: TextAlign.left,
@@ -163,7 +163,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                '4',
+                                '${immobile.garage}',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 18,
@@ -176,7 +176,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                         ),
                         Expanded(
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
                                 'Área',
                                 textAlign: TextAlign.left,
@@ -188,7 +188,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                '53m²',
+                                '${immobile.area} m²',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 18,
@@ -203,7 +203,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                      '${immobile.description}',
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 21,
@@ -234,7 +234,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
           children: [
             Expanded(
               child: Text(
-                'R\$ 930/ MÊS',
+                price + (immobile.type == 'Aluguel' ? '/mês' : ''),
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontSize: 32,

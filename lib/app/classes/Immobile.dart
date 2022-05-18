@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Immobile {
+  String? id;
   String? cep;
   String? city;
   String? borough;
   String? address;
   String? longitude;
   String? latitude;
-  List<String> images;
+  List<String>? images;
   String? numberRoom;
   String? numberBedroom;
   String? type;
@@ -35,12 +38,13 @@ class Immobile {
       this.price);
 
   String? get getCep => cep;
+  String? get getId => id;
   String? get getCity => city;
   String? get getBorough => borough;
   String? get getAddress => address;
   String? get getLongitude => longitude;
   String? get getLatitude => latitude;
-  List<String> get getImages => images;
+  List<String>? get getImages => images;
   String? get getNumberRoom => numberRoom;
   String? get getNumberBedroom => numberBedroom;
   String? get getArea => area;
@@ -50,6 +54,7 @@ class Immobile {
   String? get getUserId => userId;
   String? get getPrice => price;
 
+  void setId(String id) => this.id = id;
   set setCep(String cep) => this.cep = cep;
   set setCity(String city) => this.city = city;
   set setBorough(String borough) => this.borough = borough;
@@ -68,6 +73,7 @@ class Immobile {
   set setPrice(String price) => this.price = price;
 
   Map<String, dynamic> get getImmobile => {
+        'id': id,
         'cep': cep,
         'city': city,
         'borough': borough,

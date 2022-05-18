@@ -20,7 +20,8 @@ class UserProfilePageState extends State<UserProfilePage> {
     if (index == 0) {
       Modular.to.pushReplacementNamed(Modular.initialRoute);
     } else if (index == 1) {
-      Modular.to.pushReplacementNamed('/register');
+      Modular.to.pushReplacementNamed('/list-announcemnt',
+          arguments: store.myImmobiles);
     } else if (index == 2) {
       Modular.to.pushReplacementNamed('/announcement');
     } else if (index == 3) {
@@ -106,7 +107,10 @@ class UserProfilePageState extends State<UserProfilePage> {
                   child: CardItem(
                       title: 'Meus Anúncios',
                       icon: Icons.home_work_outlined,
-                      onPress: () {}),
+                      onPress: () {
+                        Modular.to.pushReplacementNamed('/list-announcemnt',
+                            arguments: store.myImmobiles);
+                      }),
                 ),
               ],
             ),

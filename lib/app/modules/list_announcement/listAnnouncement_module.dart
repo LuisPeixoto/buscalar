@@ -7,13 +7,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 class ListAnnouncementModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => ListAnnouncementStore()),
-    Bind.lazySingleton((i) => AnnouncementStore()),
+    Bind.lazySingleton((i) => ListAnnouncementStore(i.args.data)),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, args) => ListAnnouncementPage()),
-    ChildRoute('/announcemnt', child: (_, args) => AnnouncementPage()),
   ];
 }

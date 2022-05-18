@@ -13,19 +13,15 @@ import 'home_page.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => HomeStore()),
+    Bind.factory((i) => HomeStore()),
     Bind.lazySingleton((i) => RegisterAnnouncementStore()),
-    Bind.lazySingleton((i) => AnnouncementStore()),
     Bind.lazySingleton((i) => AboutStore()),
-    Bind.lazySingleton((i) => ListAnnouncementStore()),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => HomePage()),
     ChildRoute('/register', child: (_, args) => RegisterAnnouncementPage()),
-    ChildRoute('/announcemnt', child: (_, args) => AnnouncementPage()),
-    ChildRoute('/list-announcemnt', child: (_, args) => ListAnnouncementPage()),
     ChildRoute('/about', child: (_, args) => AboutPage()),
   ];
 }

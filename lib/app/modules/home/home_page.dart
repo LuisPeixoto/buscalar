@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:buscalar/app/components/input-search.dart';
 import 'package:buscalar/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -22,7 +23,11 @@ class _HomePageState extends State<HomePage> {
     if (index == 0) {
       Modular.to.pushReplacementNamed('/home');
     } else if (index == 1) {
-      Modular.to.pushReplacementNamed('/list-announcemnt');
+      print('${store.immobiles}');
+      Modular.to.pushReplacementNamed('/list-announcemnt',
+          arguments: store.immobiles
+              .where((element) => element.type == 'Aluguel')
+              .toList());
     } else if (index == 2) {
       Modular.to.pushReplacementNamed('/user-profile');
     } else if (index == 3) {
@@ -38,88 +43,13 @@ class _HomePageState extends State<HomePage> {
         toolbarHeight: 80,
         elevation: 0,
         backgroundColor: Colors.white,
-        title: SizedBox(
-          height: 52,
-          child: TextField(
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Color(0xFFEBEBEB),
-              prefixIcon: Icon(Icons.search, color: Color(0xFF949597)),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(8)),
-              hintStyle: TextStyle(color: Color(0xFF949597)),
-              hintText: 'Digite o local que deseja ',
-            ),
-          ),
-        ),
-        actions: [
-          Container(
-            child: Container(
-              width: 62,
-              margin: EdgeInsets.fromLTRB(0, 14, 16, 13),
-              decoration: BoxDecoration(
-                color: Color(0xFFEBEBEB),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: IconButton(
-                icon: Icon(Icons.filter_alt, color: Color(0xFF949597)),
-                onPressed: () {},
-              ),
-            ),
-          ),
-        ],
+        title:
+            InputSearch(title: 'Digite o local que deseja', icon: Icons.search),
       ),
       body: Column(
         children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Row(children: [
-              Text(
-                'Todos',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color(0xFF930000),
-                ),
-              ),
-              SizedBox(width: 24),
-              Text(
-                'Aluguel',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 166, 167, 169),
-                ),
-              ),
-              SizedBox(width: 24),
-              Text(
-                'Venda',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 166, 167, 169),
-                ),
-              ),
-              SizedBox(width: 24),
-              Text(
-                'Hotel',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 166, 167, 169),
-                ),
-              ),
-              SizedBox(width: 24),
-              Text(
-                'Pousada',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 166, 167, 169),
-                ),
-              ),
-            ]),
-          ),
-          SizedBox(height: 16),
           SizedBox(
-            height: MediaQuery.of(context).size.height - 200,
+            height: MediaQuery.of(context).size.height - 160,
             child: FlutterMap(
               options: MapOptions(
                 center: latLng.LatLng(-21.758991, -41.319724),
@@ -259,7 +189,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color(0xFF930000),
         label: Text('Criar anúncio'),
         onPressed: () {
-          Modular.to.pushNamed('/register');
+          store.getAllImmobiles();
+          //Modular.to.pushNamed('/register');
         },
         icon: Icon(Icons.add),
       ),

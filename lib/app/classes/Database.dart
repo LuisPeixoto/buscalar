@@ -1,3 +1,4 @@
+import 'package:buscalar/app/classes/Immobile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
@@ -5,16 +6,39 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class Database {
-  List get getAllImmobile {
-    List immobiles = [];
+  Future<List<Immobile>> get getAllImmobiles async {
+    List<Immobile> immobiles = [];
 
-    FirebaseFirestore.instance.collection('immobile').get().then(
-          (value) => value.docs.forEach(
-            (element) {
-              immobiles.add(element.data());
-            },
-          ),
-        );
+    final snapshot =
+        await FirebaseFirestore.instance.collection('immobile').get();
+
+    for (var doc in snapshot.docs) {
+      var data = doc.data();
+      List<String> images = List<String>.from(data['images'] ?? []);
+
+      var immobile = Immobile(
+        data['cep'] ?? '',
+        data['city'] ?? '',
+        data['borough'] ?? '',
+        data['address'] ?? '',
+        data['longitude'] ?? '',
+        data['latitude'] ?? '',
+        images,
+        data['numberRoom'] ?? '',
+        data['numberBedroom'] ?? '',
+        data['type'] ?? '',
+        data['area'] ?? '',
+        data['garage'] ?? '',
+        data['description'] ?? '',
+        data['numberPhone'] ?? '',
+        data['userId'] ?? '',
+        data['price'] ?? '',
+      );
+
+      immobile.setId(doc.id);
+
+      immobiles.add(immobile);
+    }
 
     return immobiles;
   }
