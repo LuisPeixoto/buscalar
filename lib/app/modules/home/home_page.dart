@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:buscalar/app/components/button-search-input.dart';
 import 'package:buscalar/app/components/input-search.dart';
+import 'package:buscalar/app/components/inputSearchHome.dart';
 import 'package:buscalar/app/components/point.dart';
 import 'package:buscalar/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
@@ -37,25 +39,28 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  late final MapController mapController;
+
+  @override
+  void initState() {
+    super.initState();
+    mapController = MapController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: 80,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title:
-            InputSearch(title: 'Digite o local que deseja', icon: Icons.search),
-      ),
-      body: Column(
+      body: Stack(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height - 160,
+            height: MediaQuery.of(context).size.height,
             child: Observer(builder: (context) {
+              print(store.latitude);
               return FlutterMap(
+                mapController: mapController,
                 options: MapOptions(
-                  center: latLng.LatLng(-21.758991, -41.319724),
+                  slideOnBoundaries: true,
+                  center: latLng.LatLng(store.latitude, store.longitude),
                   zoom: 13,
                 ),
                 layers: [
@@ -81,7 +86,37 @@ class _HomePageState extends State<HomePage> {
                 ],
               );
             }),
-          )
+          ),
+          Positioned(
+              top: 32,
+              //height: 60,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        child: InputSearchHome(
+                            title: 'Digite o local que deseja',
+                            onChanged: store.setSearchInput),
+                      ),
+                    ),
+                    ButtonSearchInput(onPressed: () async {
+                      await store.getLocation();
+                      mapController.move(
+                        latLng.LatLng(
+                          store.latitude,
+                          store.longitude,
+                        ),
+                        13,
+                      );
+                    }),
+                  ],
+                ),
+              ))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
