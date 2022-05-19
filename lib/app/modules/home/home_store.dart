@@ -12,6 +12,7 @@ abstract class HomeStoreBase with Store {
 
   HomeStoreBase() {
     getAllImmobiles();
+    print('dsadlaldpaldpadlpa');
   }
 
   @observable
