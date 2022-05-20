@@ -1,4 +1,5 @@
 import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/announcement/announcement_store.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,8 @@ class AnnouncementPageState extends State<AnnouncementPage> {
 
   @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
+
     Immobile immobile = store.immobile;
     var images = immobile.images!.isEmpty ? [''] : immobile.images;
     var price = 'R\$ ${immobile.price}';

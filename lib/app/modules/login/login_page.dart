@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/login/login_store.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
     return Scaffold(
       body: Center(
         child: Column(

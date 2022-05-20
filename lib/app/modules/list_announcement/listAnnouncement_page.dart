@@ -1,6 +1,8 @@
+import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
 import 'package:buscalar/app/components/card-announcement.dart';
 import 'package:buscalar/app/components/input-search.dart';
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/list_announcement/listAnnouncement_store.dart';
@@ -19,20 +21,8 @@ class ListAnnouncementPageState extends State<ListAnnouncementPage> {
   final ListAnnouncementStore store = Modular.get();
 
   @override
-  void _onItemTapped(int index) {
-    if (index == 0) {
-      Modular.to.pushReplacementNamed(Modular.initialRoute);
-    } else if (index == 1) {
-      Modular.to.pushReplacementNamed('/list-announcemnt');
-    } else if (index == 2) {
-      Modular.to.pushReplacementNamed('/user-profile');
-    } else if (index == 3) {
-      Modular.to.pushReplacementNamed('/about');
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -102,7 +92,7 @@ class ListAnnouncementPageState extends State<ListAnnouncementPage> {
         ],
         currentIndex: 1,
         selectedItemColor: Color(0xFF930000),
-        onTap: _onItemTapped,
+        onTap: bottomNavigationBarItems,
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF930000),

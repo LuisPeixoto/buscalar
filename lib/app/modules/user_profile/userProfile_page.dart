@@ -1,5 +1,7 @@
+import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
 import 'package:buscalar/app/components/card-item.dart';
 import 'package:buscalar/app/components/list-item.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/user_profile/userProfile_store.dart';
 import 'package:flutter/material.dart';
@@ -16,21 +18,8 @@ class UserProfilePageState extends State<UserProfilePage> {
   final UserProfileStore store = Modular.get();
 
   @override
-  void _onItemTapped(int index) {
-    if (index == 0) {
-      Modular.to.pushReplacementNamed(Modular.initialRoute);
-    } else if (index == 1) {
-      Modular.to.pushReplacementNamed('/list-announcemnt',
-          arguments: store.myImmobiles);
-    } else if (index == 2) {
-      Modular.to.pushReplacementNamed('/announcement');
-    } else if (index == 3) {
-      Modular.to.pushReplacementNamed('/about');
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -176,7 +165,7 @@ class UserProfilePageState extends State<UserProfilePage> {
         ],
         currentIndex: 2,
         selectedItemColor: Color(0xFF930000),
-        onTap: _onItemTapped,
+        onTap: bottomNavigationBarItems,
       ),
     );
   }

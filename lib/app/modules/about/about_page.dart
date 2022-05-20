@@ -1,3 +1,5 @@
+import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/about/about_store.dart';
 import 'package:flutter/material.dart';
@@ -12,20 +14,10 @@ class AboutPage extends StatefulWidget {
 class AboutPageState extends State<AboutPage> {
   final AboutStore store = Modular.get();
 
-  void _onItemTapped(int index) {
-    if (index == 0) {
-      Modular.to.pushReplacementNamed(Modular.initialRoute);
-    } else if (index == 1) {
-      Modular.to.pushReplacementNamed('/register');
-    } else if (index == 2) {
-      Modular.to.pushReplacementNamed('/announcement');
-    } else if (index == 3) {
-      Modular.to.pushReplacementNamed('/about');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -157,7 +149,7 @@ class AboutPageState extends State<AboutPage> {
         ],
         currentIndex: 3,
         selectedItemColor: Color(0xFF930000),
-        onTap: _onItemTapped,
+        onTap: bottomNavigationBarItems,
       ),
     );
   }

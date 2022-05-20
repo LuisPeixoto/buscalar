@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:buscalar/app/components/button_small.dart';
 import 'package:buscalar/app/components/input.dart';
 import 'package:buscalar/app/components/select.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/register_announcement/register_announcement_store.dart';
@@ -27,16 +29,19 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
 
   @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Color(0xFF930000)),
+        elevation: 0,
+        //title: Text(widget.title),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 24),
-              SizedBox(height: 24),
-              Image(image: AssetImage('assets/logo.png')),
               SizedBox(height: 24),
               Text(
                 'Criar um novo anuncio',

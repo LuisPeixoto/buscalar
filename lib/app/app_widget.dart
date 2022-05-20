@@ -20,6 +20,7 @@ class AppWidget extends StatelessWidget {
       title: 'Buscalar',
       theme: ThemeData(
           primaryColor: Color(0xFF930000),
+          backgroundColor: Color(0xFFFAFAFA),
           primarySwatch: MaterialColor(0xFF930000, color)),
     ).modular();
   }

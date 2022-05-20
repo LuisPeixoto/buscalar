@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
 import 'package:buscalar/app/components/button-search-input.dart';
 import 'package:buscalar/app/components/input-search.dart';
 import 'package:buscalar/app/components/inputSearchHome.dart';
 import 'package:buscalar/app/components/point.dart';
+import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:buscalar/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -24,21 +27,6 @@ class _HomePageState extends State<HomePage> {
   final HomeStore store = Modular.get();
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    if (index == 0) {
-      Modular.to.pushReplacementNamed('/home');
-    } else if (index == 1) {
-      print('${store.immobiles}');
-      Modular.to.pushReplacementNamed(
-        '/list-announcemnt',
-      );
-    } else if (index == 2) {
-      Modular.to.pushReplacementNamed('/user-profile');
-    } else if (index == 3) {
-      Modular.to.pushReplacementNamed('/about');
-    }
-  }
-
   late final MapController mapController;
 
   @override
@@ -50,6 +38,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    StatusBarStyle();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -134,7 +124,7 @@ class _HomePageState extends State<HomePage> {
         ],
         //currentIndex: _selectedIndex,
         selectedItemColor: Color(0xFF930000),
-        onTap: _onItemTapped,
+        onTap: bottomNavigationBarItems,
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF930000),
