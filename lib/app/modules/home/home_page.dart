@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     mapController = MapController();
+    store.getLocationCurrent(mapController);
   }
 
   @override
@@ -55,7 +56,6 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Observer(builder: (context) {
-              print(store.latitude);
               return FlutterMap(
                 mapController: mapController,
                 options: MapOptions(
@@ -76,9 +76,9 @@ class _HomePageState extends State<HomePage> {
                               height: 75,
                               point: latLng.LatLng(
                                   double.parse(
-                                      immobile.latitude ?? '-21.766655'),
+                                      immobile.latitude ?? '-21.7635423'),
                                   double.parse(
-                                      immobile.longitude ?? '-41.319724')),
+                                      immobile.longitude ?? '-41.2930897')),
                               builder: (ctx) => Point(immobile: immobile),
                             ))
                         .toList(),
@@ -104,15 +104,8 @@ class _HomePageState extends State<HomePage> {
                             onChanged: store.setSearchInput),
                       ),
                     ),
-                    ButtonSearchInput(onPressed: () async {
-                      await store.getLocation();
-                      mapController.move(
-                        latLng.LatLng(
-                          store.latitude,
-                          store.longitude,
-                        ),
-                        13,
-                      );
+                    ButtonSearchInput(onPressed: () {
+                      store.getLocation(mapController);
                     }),
                   ],
                 ),
