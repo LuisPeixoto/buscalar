@@ -48,6 +48,7 @@ dependencies:
   firebase_auth: ^3.3.18
   url_launcher: ^6.0.9
   flutter_svg: ^1.0.3
+  location: ^4.4.0
 
 dev_dependencies:
   flutter_test:
