@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class AnnouncementModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind((i) => AnnouncementStore(i.args.data)),
+    Bind.factory((i) => AnnouncementStore(i.args.data)),
   ];
 
   @override

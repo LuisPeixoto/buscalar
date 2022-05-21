@@ -23,19 +23,24 @@ class RegisterAnnouncementPage extends StatefulWidget {
 
 class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
   final RegisterAnnouncementStore store = Modular.get();
-  final _controllerCep = TextEditingController();
-  final _controllerCity = TextEditingController();
-  final _controllerBorough = TextEditingController();
-  final _controllerAddress = TextEditingController();
-  final _controllerNumberRoom = TextEditingController();
-  final _controllerNumberBedroom = TextEditingController();
-  final _controllerArea = TextEditingController();
-  final _controllerGarage = TextEditingController();
-  final _controllerDescription = TextEditingController();
-  final _controllerPrice = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final _controllerCep = TextEditingController(text: store.cep ?? '');
+    final _controllerCity = TextEditingController();
+    final _controllerBorough = TextEditingController();
+    final _controllerAddress = TextEditingController();
+    final _controllerNumberRoom =
+        TextEditingController(text: store.numberRoom ?? '');
+    final _controllerNumberBedroom =
+        TextEditingController(text: store.numberBedroom ?? '');
+    final _controllerArea = TextEditingController(text: store.area ?? '');
+    final _controllerGarage =
+        TextEditingController(text: store.numberGarage ?? '');
+    final _controllerDescription =
+        TextEditingController(text: store.description ?? '');
+    final _controllerPrice = TextEditingController(text: store.price ?? '');
+
     StatusBarStyle();
     return Scaffold(
       appBar: AppBar(
@@ -68,9 +73,9 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
               Observer(builder: (context) {
                 return Input(
                   title: 'CEP',
-                  icon: Icons.near_me,
-                  controller: _controllerCep..text = store.cep ?? '',
                   onChanged: store.setCep,
+                  icon: Icons.near_me,
+                  controller: _controllerCep,
                 );
               }),
               SizedBox(height: 24),
@@ -92,9 +97,10 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
               SizedBox(height: 24),
               Observer(builder: (context) {
                 return Input(
-                    title: 'Endereço',
-                    icon: Icons.streetview_rounded,
-                    controller: _controllerAddress..text = store.address ?? '');
+                  title: 'Endereço',
+                  icon: Icons.streetview_rounded,
+                  controller: _controllerAddress..text = store.address ?? '',
+                );
               }),
               SizedBox(height: 48),
               Text(
@@ -107,30 +113,28 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 title: 'Número de quartos',
                 icon: Icons.meeting_room_sharp,
                 onChanged: store.setNumberRoom,
-                controller: _controllerNumberRoom
-                  ..text = store.numberRoom ?? '',
+                controller: _controllerNumberRoom,
               ),
               SizedBox(height: 24),
               Input(
                 title: 'Número de banheiros',
                 icon: Icons.bathtub_rounded,
                 onChanged: store.setNumberBedroom,
-                controller: _controllerNumberBedroom
-                  ..text = store.numberBedroom ?? '',
+                controller: _controllerNumberBedroom,
               ),
               SizedBox(height: 24),
               Input(
                 title: 'Area(m²)',
                 icon: Icons.app_registration,
                 onChanged: store.setArea,
-                controller: _controllerArea..text = store.area ?? '',
+                controller: _controllerArea,
               ),
               SizedBox(height: 24),
               Input(
                 title: 'Numero de vagas de garagem',
                 icon: Icons.car_repair_rounded,
                 onChanged: store.setGarage,
-                controller: _controllerGarage..text = store.numberGarage ?? '',
+                controller: _controllerGarage,
               ),
               SizedBox(height: 24),
               Input(
@@ -139,8 +143,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 onChanged: store.setDescription,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                controller: _controllerDescription
-                  ..text = store.description ?? '',
+                controller: _controllerDescription,
               ),
               SizedBox(height: 24),
               Observer(builder: (context) {
@@ -148,7 +151,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                   title: store.type == 'Aluguel' ? 'Valor mensal' : 'Valor',
                   icon: Icons.attach_money_outlined,
                   onChanged: store.setPrice,
-                  controller: _controllerPrice..text = store.price ?? '',
+                  controller: _controllerPrice,
                 );
               }),
               SizedBox(height: 24),
@@ -243,8 +246,12 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                     ),
-                    onPressed: () {
-                      store.save();
+                    onPressed: () async {
+                      loading(context);
+                      await store.save();
+                      Navigator.of(context).pop();
+
+                      Modular.to.pushNamed(Modular.initialRoute);
                     },
                     child: Text(
                         store.immobile == null ? 'Cadastrar' : 'Atualizar',
@@ -259,44 +266,5 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
         ),
       ),
     );
-  }
-}
-
-List<Widget> getFields(List<Map<String, dynamic>> fields) {
-  return fields.map((field) {
-    return Observer(builder: (context) {
-      return Column(
-        children: [
-          const SizedBox(height: 24),
-          Input(
-            title: field['title'] as String,
-            icon: field['icon'] as IconData,
-            onChanged: field['onChanged'] as dynamic,
-            controller: field['controller'] as TextEditingController,
-          ),
-        ],
-      );
-    });
-  }).toList();
-}
-
-Future<Map<String, String>> getInformationFurCep(String? cep) async {
-  final response =
-      await http.get(Uri.parse('https://viacep.com.br/ws/$cep/json/'));
-
-  if (response.statusCode == 200) {
-    final json = jsonDecode(response.body);
-
-    return {
-      'city': json['localidade'],
-      'address': json['logradouro'],
-      'borough': 'fsdfsffsf',
-    };
-  } else {
-    return {
-      'city': '',
-      'borough': '',
-      'address': '',
-    };
   }
 }

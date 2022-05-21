@@ -217,6 +217,11 @@ abstract class _RegisterAnnouncementStoreBase with Store {
 
   @action
   Future<void> save() async {
-    await Database().addImmobile(getData().getImmobile);
+    if (immobile == null) {
+      await Database().addImmobile(getData().getImmobile);
+    } else {
+      await Database()
+          .updateImmobile(getData().getImmobile, immobile!.id.toString());
+    }
   }
 }

@@ -34,6 +34,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
           store.immobile.userId == '1'
               ? IconButton(
                   onPressed: () {
+                    print(immobile.id);
                     Modular.to
                         .pushNamed('/register', arguments: store.immobile);
                   },

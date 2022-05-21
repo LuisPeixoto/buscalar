@@ -47,11 +47,11 @@ class Database {
     await FirebaseFirestore.instance.collection('immobile').add(immobile);
   }
 
-  Future<void> updateImmobile(immobile) async {
+  Future<void> updateImmobile(immobile, String id) async {
     await FirebaseFirestore.instance
         .collection('immobile')
-        .doc(immobile.id)
-        .update(immobile.toJson());
+        .doc(id)
+        .update(immobile);
   }
 
   void deleteImmobile(String id) {
@@ -93,8 +93,6 @@ class Database {
       _photo = File(image.path);
       await ref.putFile(_photo);
     }
-
-    print('uploading image: ${ref.getDownloadURL()}');
 
     return await ref.getDownloadURL();
   }
