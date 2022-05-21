@@ -1,4 +1,4 @@
-import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
+import 'package:buscalar/app/components/navbar.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/about/about_store.dart';
@@ -127,30 +127,7 @@ class AboutPageState extends State<AboutPage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Lista',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Sobre',
-          ),
-        ],
-        currentIndex: 3,
-        selectedItemColor: Color(0xFF930000),
-        onTap: bottomNavigationBarItems,
-      ),
+      bottomNavigationBar: NavBar(currentIndex: 3),
     );
   }
 }

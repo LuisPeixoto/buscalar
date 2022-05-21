@@ -1,7 +1,7 @@
-import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
 import 'package:buscalar/app/components/card-announcement.dart';
 import 'package:buscalar/app/components/input-search.dart';
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/navbar.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -70,30 +70,7 @@ class ListAnnouncementPageState extends State<ListAnnouncementPage> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Lista',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Sobre',
-          ),
-        ],
-        currentIndex: 1,
-        selectedItemColor: Color(0xFF930000),
-        onTap: bottomNavigationBarItems,
-      ),
+      bottomNavigationBar: NavBar(currentIndex: 1),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF930000),
         label: Text('Criar anúncio'),

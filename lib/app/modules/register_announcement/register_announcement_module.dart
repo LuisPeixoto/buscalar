@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class RegisterAnnouncementModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => RegisterAnnouncementStore()),
+    Bind.lazySingleton((i) => RegisterAnnouncementStore(i.args.data)),
   ];
 
   @override

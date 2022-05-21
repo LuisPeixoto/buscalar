@@ -31,6 +31,23 @@ class AnnouncementPageState extends State<AnnouncementPage> {
         iconTheme: IconThemeData(color: Color(0xFF930000)),
         elevation: 0,
         actions: [
+          store.immobile.userId == '1'
+              ? IconButton(
+                  onPressed: () {
+                    Modular.to
+                        .pushNamed('/register', arguments: store.immobile);
+                  },
+                  icon: Icon(Icons.edit),
+                  color: Color(0xFF930000),
+                )
+              : Container(),
+          store.immobile.userId == '1'
+              ? IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.delete),
+                  color: Color(0xFF930000),
+                )
+              : Container(),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.favorite_border),

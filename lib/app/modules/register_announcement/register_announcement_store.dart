@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:path/path.dart';
 
 import 'dart:io';
@@ -17,6 +18,34 @@ class RegisterAnnouncementStore = _RegisterAnnouncementStoreBase
     with _$RegisterAnnouncementStore;
 
 abstract class _RegisterAnnouncementStoreBase with Store {
+  final Immobile? immobile;
+
+  _RegisterAnnouncementStoreBase(@Data this.immobile) {
+    if (immobile != null) {
+      setImmobile();
+    }
+  }
+
+  @action
+  void setImmobile() {
+    setCep(immobile?.cep);
+    setType(immobile?.city);
+    setBorough(immobile?.borough);
+    setCity(immobile?.address);
+    setLatitude(immobile?.latitude);
+    setLongitude(immobile?.longitude);
+    setImages(immobile?.images);
+    setNumberRoom(immobile?.numberRoom);
+    setNumberBedroom(immobile?.numberBedroom);
+    setArea(immobile?.area);
+    setGarage(immobile?.garage);
+    setDescription(immobile?.description);
+    setNumberPhone(immobile?.numberPhone);
+    setUserId(immobile?.userId);
+    setType(immobile?.type);
+    setPrice(immobile?.price);
+  }
+
   @observable
   String? cep;
 

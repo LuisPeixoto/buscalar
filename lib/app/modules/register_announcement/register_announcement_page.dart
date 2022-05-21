@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:buscalar/app/components/button_small.dart';
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/loading.dart';
 import 'package:buscalar/app/components/select.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter/services.dart';
@@ -26,6 +27,12 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
   final _controllerCity = TextEditingController();
   final _controllerBorough = TextEditingController();
   final _controllerAddress = TextEditingController();
+  final _controllerNumberRoom = TextEditingController();
+  final _controllerNumberBedroom = TextEditingController();
+  final _controllerArea = TextEditingController();
+  final _controllerGarage = TextEditingController();
+  final _controllerDescription = TextEditingController();
+  final _controllerPrice = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +41,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xFF930000)),
         elevation: 0,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         //title: Text(widget.title),
       ),
       body: Center(
@@ -61,8 +69,8 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 return Input(
                   title: 'CEP',
                   icon: Icons.near_me,
+                  controller: _controllerCep..text = store.cep ?? '',
                   onChanged: store.setCep,
-                  controller: _controllerCep,
                 );
               }),
               SizedBox(height: 24),
@@ -99,24 +107,30 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 title: 'Número de quartos',
                 icon: Icons.meeting_room_sharp,
                 onChanged: store.setNumberRoom,
+                controller: _controllerNumberRoom
+                  ..text = store.numberRoom ?? '',
               ),
               SizedBox(height: 24),
               Input(
                 title: 'Número de banheiros',
                 icon: Icons.bathtub_rounded,
                 onChanged: store.setNumberBedroom,
+                controller: _controllerNumberBedroom
+                  ..text = store.numberBedroom ?? '',
               ),
               SizedBox(height: 24),
               Input(
                 title: 'Area(m²)',
                 icon: Icons.app_registration,
                 onChanged: store.setArea,
+                controller: _controllerArea..text = store.area ?? '',
               ),
               SizedBox(height: 24),
               Input(
                 title: 'Numero de vagas de garagem',
                 icon: Icons.car_repair_rounded,
                 onChanged: store.setGarage,
+                controller: _controllerGarage..text = store.numberGarage ?? '',
               ),
               SizedBox(height: 24),
               Input(
@@ -125,6 +139,8 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                 onChanged: store.setDescription,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
+                controller: _controllerDescription
+                  ..text = store.description ?? '',
               ),
               SizedBox(height: 24),
               Observer(builder: (context) {
@@ -132,6 +148,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                   title: store.type == 'Aluguel' ? 'Valor mensal' : 'Valor',
                   icon: Icons.attach_money_outlined,
                   onChanged: store.setPrice,
+                  controller: _controllerPrice..text = store.price ?? '',
                 );
               }),
               SizedBox(height: 24),
@@ -158,7 +175,11 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                     children: [
                       ButtonSmall(
                         title: 'Faca o upload da foto',
-                        onPress: store.uploadImages,
+                        onPress: () async {
+                          loading(context);
+                          await store.uploadImages();
+                          Navigator.of(context).pop();
+                        },
                         icon: Icons.file_upload_outlined,
                       ),
                       SizedBox(height: 8),
@@ -225,7 +246,8 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                     onPressed: () {
                       store.save();
                     },
-                    child: Text('Cadastrar',
+                    child: Text(
+                        store.immobile == null ? 'Cadastrar' : 'Atualizar',
                         style: TextStyle(
                             fontSize: 21,
                             fontWeight: FontWeight.w300,

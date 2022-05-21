@@ -1,18 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:buscalar/app/components/bottomNavigationBarItems.dart';
 import 'package:buscalar/app/components/button-search-input.dart';
-import 'package:buscalar/app/components/input-search.dart';
 import 'package:buscalar/app/components/inputSearchHome.dart';
+import 'package:buscalar/app/components/loading.dart';
+import 'package:buscalar/app/components/navbar.dart';
 import 'package:buscalar/app/components/point.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:buscalar/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 
 class HomePage extends StatefulWidget {
@@ -94,38 +92,17 @@ class _HomePageState extends State<HomePage> {
                             onChanged: store.setSearchInput),
                       ),
                     ),
-                    ButtonSearchInput(onPressed: () {
-                      store.getLocation(mapController);
+                    ButtonSearchInput(onPressed: () async {
+                      loading(context);
+                      await store.getLocation(mapController);
+                      Navigator.of(context).pop();
                     }),
                   ],
                 ),
               ))
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Lista',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Sobre',
-          ),
-        ],
-        //currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFF930000),
-        onTap: bottomNavigationBarItems,
-      ),
+      bottomNavigationBar: NavBar(currentIndex: 0),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF930000),
         label: Text('Criar anúncio'),

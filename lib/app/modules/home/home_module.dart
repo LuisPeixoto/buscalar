@@ -14,14 +14,12 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.factory((i) => HomeStore()),
-    Bind.lazySingleton((i) => RegisterAnnouncementStore()),
     Bind.lazySingleton((i) => AboutStore()),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => HomePage()),
-    ChildRoute('/register', child: (_, args) => RegisterAnnouncementPage()),
     ChildRoute('/about', child: (_, args) => AboutPage()),
   ];
 }

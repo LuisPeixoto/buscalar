@@ -299,6 +299,17 @@ mixin _$RegisterAnnouncementStore on _RegisterAnnouncementStoreBase, Store {
       ActionController(name: '_RegisterAnnouncementStoreBase');
 
   @override
+  void setImmobile() {
+    final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
+        .startAction(name: '_RegisterAnnouncementStoreBase.setImmobile');
+    try {
+      return super.setImmobile();
+    } finally {
+      _$_RegisterAnnouncementStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCep(String? cep) {
     final _$actionInfo = _$_RegisterAnnouncementStoreBaseActionController
         .startAction(name: '_RegisterAnnouncementStoreBase.setCep');

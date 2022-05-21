@@ -47,12 +47,15 @@ class Database {
     await FirebaseFirestore.instance.collection('immobile').add(immobile);
   }
 
-  void deleteImmobile(String id) {
-    FirebaseFirestore.instance.collection('immobile').doc(id).delete();
+  Future<void> updateImmobile(immobile) async {
+    await FirebaseFirestore.instance
+        .collection('immobile')
+        .doc(immobile.id)
+        .update(immobile.toJson());
   }
 
-  void updateImmobile(String id, Map<String, dynamic> immobile) {
-    FirebaseFirestore.instance.collection('immobile').doc(id).update(immobile);
+  void deleteImmobile(String id) {
+    FirebaseFirestore.instance.collection('immobile').doc(id).delete();
   }
 
   void getImmobile(String id) {

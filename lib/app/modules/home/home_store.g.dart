@@ -24,6 +24,36 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  final _$latitudeAtom = Atom(name: 'HomeStoreBase.latitude');
+
+  @override
+  double get latitude {
+    _$latitudeAtom.reportRead();
+    return super.latitude;
+  }
+
+  @override
+  set latitude(double value) {
+    _$latitudeAtom.reportWrite(value, super.latitude, () {
+      super.latitude = value;
+    });
+  }
+
+  final _$longitudeAtom = Atom(name: 'HomeStoreBase.longitude');
+
+  @override
+  double get longitude {
+    _$longitudeAtom.reportRead();
+    return super.longitude;
+  }
+
+  @override
+  set longitude(double value) {
+    _$longitudeAtom.reportWrite(value, super.longitude, () {
+      super.longitude = value;
+    });
+  }
+
   final _$immobilesAtom = Atom(name: 'HomeStoreBase.immobiles');
 
   @override
@@ -37,6 +67,28 @@ mixin _$HomeStore on HomeStoreBase, Store {
     _$immobilesAtom.reportWrite(value, super.immobiles, () {
       super.immobiles = value;
     });
+  }
+
+  final _$searchInputAtom = Atom(name: 'HomeStoreBase.searchInput');
+
+  @override
+  String? get searchInput {
+    _$searchInputAtom.reportRead();
+    return super.searchInput;
+  }
+
+  @override
+  set searchInput(String? value) {
+    _$searchInputAtom.reportWrite(value, super.searchInput, () {
+      super.searchInput = value;
+    });
+  }
+
+  final _$getLocationAsyncAction = AsyncAction('HomeStoreBase.getLocation');
+
+  @override
+  Future<void> getLocation(MapController mapController) {
+    return _$getLocationAsyncAction.run(() => super.getLocation(mapController));
   }
 
   final _$getAllImmobilesAsyncAction =
@@ -62,10 +114,57 @@ mixin _$HomeStore on HomeStoreBase, Store {
   }
 
   @override
+  void setSearchInput(String? value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setSearchInput');
+    try {
+      return super.setSearchInput(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLatitude(double value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setLatitude');
+    try {
+      return super.setLatitude(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLongitude(double value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setLongitude');
+    try {
+      return super.setLongitude(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void moveMap(MapController mapController, double latitude, double longitude) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.moveMap');
+    try {
+      return super.moveMap(mapController, latitude, longitude);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 counter: ${counter},
-immobiles: ${immobiles}
+latitude: ${latitude},
+longitude: ${longitude},
+immobiles: ${immobiles},
+searchInput: ${searchInput}
     ''';
   }
 }
