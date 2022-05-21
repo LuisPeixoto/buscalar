@@ -1,4 +1,7 @@
+import 'package:buscalar/app/classes/Database.dart';
 import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:buscalar/app/components/alert_dialog.dart';
+import 'package:buscalar/app/components/loading.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/announcement/announcement_store.dart';
@@ -34,7 +37,6 @@ class AnnouncementPageState extends State<AnnouncementPage> {
           store.immobile.userId == '1'
               ? IconButton(
                   onPressed: () {
-                    print(immobile.id);
                     Modular.to
                         .pushNamed('/register', arguments: store.immobile);
                   },
@@ -44,7 +46,19 @@ class AnnouncementPageState extends State<AnnouncementPage> {
               : Container(),
           store.immobile.userId == '1'
               ? IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    alertDialog(
+                        context,
+                        Icons.delete_forever,
+                        'Você está prestes a excluir este anúncio',
+                        'Isso excluirá seu anuncio do Buscalar, tem certeza?',
+                        'Excluir', () async {
+                      await Database()
+                          .deleteImmobile(store.immobile.id.toString());
+                      Modular.to.pop();
+                      Modular.to.pushNamed(Modular.initialRoute);
+                    });
+                  },
                   icon: Icon(Icons.delete),
                   color: Color(0xFF930000),
                 )

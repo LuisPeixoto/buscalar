@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-void alertDialog(BuildContext context, String title, String message,
-    String textButton, Function()? onPressed) {
+void alertDialog(BuildContext context, IconData icon, String title,
+    String message, String textButton, Function()? onPressed) {
   (showDialog(
     context: context,
     builder: (context) {
@@ -15,7 +15,7 @@ void alertDialog(BuildContext context, String title, String message,
                 color: Colors.grey[300],
               ),
               child: Icon(
-                Icons.delete_forever,
+                icon,
                 color: Color.fromARGB(255, 187, 82, 74),
                 size: 100,
               ),

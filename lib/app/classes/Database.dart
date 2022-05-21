@@ -54,8 +54,8 @@ class Database {
         .update(immobile);
   }
 
-  void deleteImmobile(String id) {
-    FirebaseFirestore.instance.collection('immobile').doc(id).delete();
+  Future<void> deleteImmobile(String id) async {
+    await FirebaseFirestore.instance.collection('immobile').doc(id).delete();
   }
 
   void getImmobile(String id) {
