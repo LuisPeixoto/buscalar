@@ -8,12 +8,10 @@ class AboutModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => AboutStore()),
-    Bind.lazySingleton((i) => HomeStore()),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, args) => AboutPage()),
-    ChildRoute(Modular.initialRoute, child: (_, args) => HomePage()),
   ];
 }
