@@ -304,7 +304,8 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                           await launch(whatappURL_ios, forceSafariVC: false);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: new Text("whatsapp no installed")));
+                              content: new Text(
+                                  "Whatsapp não está instalado no seu dispositivo")));
                         }
                       } else {
                         // android , web
@@ -312,7 +313,8 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                           await launch(whatsappURl_android);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: new Text("whatsapp no installed")));
+                              content: new Text(
+                                  "Whatsapp não está instalado no seu dispositivo")));
                         }
                       }
                     },
