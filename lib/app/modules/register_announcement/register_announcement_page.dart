@@ -177,7 +177,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ButtonSmall(
-                        title: 'Faca o upload da foto',
+                        title: 'Faça o upload da foto',
                         onPress: () async {
                           loading(context);
                           await store.uploadImages();

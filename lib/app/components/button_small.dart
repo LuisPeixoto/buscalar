@@ -33,16 +33,16 @@ class ButtonSmall extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 icon != null
-                    ? Expanded(flex: 1, child: Icon(icon, color: Colors.white))
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Icon(icon, color: Colors.white),
+                      )
                     : SizedBox(),
-                Expanded(
-                  flex: 3,
-                  child: Text(title,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white)),
-                ),
+                Text(title,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white)),
               ])),
     );
   }

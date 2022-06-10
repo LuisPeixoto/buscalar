@@ -286,7 +286,6 @@ class AnnouncementPageState extends State<AnnouncementPage> {
               child: Container(
                 width: double.infinity,
                 height: 59,
-                padding: EdgeInsets.symmetric(horizontal: 12),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       onPrimary: Colors.black87,
@@ -324,6 +323,8 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                       }
                     },
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: const [
                         Icon(Icons.whatsapp, color: Colors.white, size: 28),
                         SizedBox(width: 4),
