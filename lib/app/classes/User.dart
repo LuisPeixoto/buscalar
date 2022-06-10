@@ -1,5 +1,6 @@
 import 'package:buscalar/app/classes/Database.dart';
 import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:buscalar/app/services/auth_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class User {
@@ -25,29 +26,11 @@ class User {
   void setPassword(String password) => this.password = password;
 
   Future<void> authenticate() async {
-    FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password)
-        .then((_) {
-      Database().getUser(email).then((user) {
-        //setName(user.name);
-        print('teste:$user');
-        //setPhoneNumber(user.phoneNumber);
-      });
-    }).catchError((error) {
-      print(error);
-    });
-
-    //return auth;
+    await AuthStore().authentication(email, password);
   }
 
   Future<void> register() async {
-    FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password)
-        .then(
-      (user) {
-        Database().addUser(getUser);
-      },
-    );
+    AuthStore().register(getUser, password);
   }
 
   Map<String, dynamic> get getUser => {

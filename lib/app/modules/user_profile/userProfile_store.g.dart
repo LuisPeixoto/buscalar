@@ -24,6 +24,36 @@ mixin _$UserProfileStore on _UserProfileStoreBase, Store {
     });
   }
 
+  final _$userNameAtom = Atom(name: '_UserProfileStoreBase.userName');
+
+  @override
+  String? get userName {
+    _$userNameAtom.reportRead();
+    return super.userName;
+  }
+
+  @override
+  set userName(String? value) {
+    _$userNameAtom.reportWrite(value, super.userName, () {
+      super.userName = value;
+    });
+  }
+
+  final _$userEmailAtom = Atom(name: '_UserProfileStoreBase.userEmail');
+
+  @override
+  String? get userEmail {
+    _$userEmailAtom.reportRead();
+    return super.userEmail;
+  }
+
+  @override
+  set userEmail(String? value) {
+    _$userEmailAtom.reportWrite(value, super.userEmail, () {
+      super.userEmail = value;
+    });
+  }
+
   final _$myImmobilesAtom = Atom(name: '_UserProfileStoreBase.myImmobiles');
 
   @override
@@ -56,6 +86,21 @@ mixin _$UserProfileStore on _UserProfileStoreBase, Store {
     });
   }
 
+  final _$userIdAtom = Atom(name: '_UserProfileStoreBase.userId');
+
+  @override
+  String? get userId {
+    _$userIdAtom.reportRead();
+    return super.userId;
+  }
+
+  @override
+  set userId(String? value) {
+    _$userIdAtom.reportWrite(value, super.userId, () {
+      super.userId = value;
+    });
+  }
+
   final _$getAllImmobilesAsyncAction =
       AsyncAction('_UserProfileStoreBase.getAllImmobiles');
 
@@ -66,6 +111,39 @@ mixin _$UserProfileStore on _UserProfileStoreBase, Store {
 
   final _$_UserProfileStoreBaseActionController =
       ActionController(name: '_UserProfileStoreBase');
+
+  @override
+  void setUserId(String id) {
+    final _$actionInfo = _$_UserProfileStoreBaseActionController.startAction(
+        name: '_UserProfileStoreBase.setUserId');
+    try {
+      return super.setUserId(id);
+    } finally {
+      _$_UserProfileStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setUserName(String? value) {
+    final _$actionInfo = _$_UserProfileStoreBaseActionController.startAction(
+        name: '_UserProfileStoreBase.setUserName');
+    try {
+      return super.setUserName(value);
+    } finally {
+      _$_UserProfileStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setUserEmail(String? value) {
+    final _$actionInfo = _$_UserProfileStoreBaseActionController.startAction(
+        name: '_UserProfileStoreBase.setUserEmail');
+    try {
+      return super.setUserEmail(value);
+    } finally {
+      _$_UserProfileStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setImmobiles(List<Immobile> value) {
@@ -104,8 +182,11 @@ mixin _$UserProfileStore on _UserProfileStoreBase, Store {
   String toString() {
     return '''
 immobiles: ${immobiles},
+userName: ${userName},
+userEmail: ${userEmail},
 myImmobiles: ${myImmobiles},
-myImmobilesFavorites: ${myImmobilesFavorites}
+myImmobilesFavorites: ${myImmobilesFavorites},
+userId: ${userId}
     ''';
   }
 }

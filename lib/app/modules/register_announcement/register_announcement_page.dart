@@ -251,7 +251,7 @@ class RegisterAnnouncementPageState extends State<RegisterAnnouncementPage> {
                       await store.save();
                       Navigator.of(context).pop();
 
-                      Modular.to.pushNamed(Modular.initialRoute);
+                      Modular.to.pushNamed('/home');
                     },
                     child: Text(
                         store.immobile == null ? 'Cadastrar' : 'Atualizar',

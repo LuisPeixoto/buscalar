@@ -1,3 +1,9 @@
+import 'package:buscalar/app/modules/home/home_store.dart';
+import 'package:buscalar/app/modules/splash/splash_module.dart';
+import 'package:buscalar/app/modules/splash/splash_store.dart';
+import 'package:buscalar/app/repositories/user_local_storage_store.dart';
+import 'package:buscalar/app/modules/register_user/registerUser_store.dart';
+import 'package:buscalar/app/services/auth_store.dart';
 import 'package:buscalar/app/modules/about/about_module.dart';
 import 'package:buscalar/app/modules/about/about_store.dart';
 import 'package:buscalar/app/modules/announcement/announcement_module.dart';
@@ -19,8 +25,13 @@ import 'modules/home/home_module.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    Bind.lazySingleton((i) => UserLocalStorageStore()),
+    Bind.lazySingleton((i) => AuthStore()),
     Bind.factory((i) => UserProfileStore()),
     Bind.factory((i) => LoginStore()),
+    Bind.factory((i) => SplashStore()),
+    Bind.factory((i) => HomeStore()),
+    Bind.factory((i) => RegisterUserStore()),
     Bind.factory((i) => AnnouncementStore(i.args.data)),
     Bind.factory((i) => ListAnnouncementStore(i.args.data)),
     Bind.factory((i) => RegisterAnnouncementStore(i.args.data)),
@@ -29,12 +40,14 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute(Modular.initialRoute, module: HomeModule()),
+    ModuleRoute(Modular.initialRoute, module: SplashModule()),
     ModuleRoute('/user-profile', module: UserProfileModule()),
+    ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/about', module: AboutModule()),
     ModuleRoute('/login', module: LoginModule()),
     ModuleRoute('/announcement', module: AnnouncementModule()),
     ModuleRoute('/register', module: RegisterAnnouncementModule()),
+    ModuleRoute('/register-user', module: RegisterUserModule()),
     ChildRoute('/list-announcemnt', child: (_, args) => ListAnnouncementPage()),
   ];
 }

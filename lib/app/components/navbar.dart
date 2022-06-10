@@ -41,14 +41,14 @@ void bottomNavigationBarItems(
   int index,
 ) {
   if (index == 0) {
-    Modular.to.pushReplacementNamed(Modular.initialRoute);
+    Modular.to.pushNamed('/home');
   } else if (index == 1) {
-    Modular.to.pushReplacementNamed(
+    Modular.to.pushNamed(
       '/list-announcemnt',
     );
   } else if (index == 2) {
-    Modular.to.pushReplacementNamed('/user-profile');
+    Modular.to.pushNamed('/user-profile');
   } else if (index == 3) {
-    Modular.to.pushReplacementNamed('/about');
+    Modular.to.pushNamed('/about');
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/loading.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/login/login_store.dart';
@@ -58,7 +59,9 @@ class LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
-                  onPressed: store.login,
+                  onPressed: () async {
+                    await store.login();
+                  },
                   child: Text('Login',
                       style: TextStyle(
                           fontSize: 21,
@@ -75,7 +78,7 @@ class LoginPageState extends State<LoginPage> {
             ),
             TextButton(
                 onPressed: () {
-                  Modular.to.pushNamed('/registerUser');
+                  Modular.to.pushNamed('/register-user');
                 },
                 child: Text(
                   'Cadastra-se',

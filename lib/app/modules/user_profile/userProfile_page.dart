@@ -1,7 +1,9 @@
+import 'package:buscalar/app/components/loading.dart';
 import 'package:buscalar/app/components/navbar.dart';
 import 'package:buscalar/app/components/card-item.dart';
 import 'package:buscalar/app/components/list-item.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/user_profile/userProfile_store.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,12 @@ class UserProfilePage extends StatefulWidget {
 
 class UserProfilePageState extends State<UserProfilePage> {
   final UserProfileStore store = Modular.get();
+
+  @override
+  void initState() {
+    super.initState();
+    store.loadUserLocalStorage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,24 +72,26 @@ class UserProfilePageState extends State<UserProfilePage> {
                           borderRadius:
                               BorderRadius.circular(50), // Image border
                         )),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Luis Fernando Peixoto',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w300),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          'luispeixoto@pq.uenf.br',
-                          style: TextStyle(
-                              color: Color(0xFF828282),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ],
-                    )
+                    Observer(builder: (context) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            store.userName ?? '',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w300),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            store.userEmail ?? '',
+                            style: TextStyle(
+                                color: Color(0xFF828282),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300),
+                          ),
+                        ],
+                      );
+                    })
                   ]),
                 ),
               ),
@@ -99,7 +109,7 @@ class UserProfilePageState extends State<UserProfilePage> {
                         title: 'Meus Anúncios',
                         icon: Icons.home_work_outlined,
                         onPress: () {
-                          Modular.to.pushReplacementNamed('/list-announcemnt',
+                          Modular.to.pushNamed('/list-announcemnt',
                               arguments: store.myImmobiles);
                         }),
                   ),
@@ -138,7 +148,12 @@ class UserProfilePageState extends State<UserProfilePage> {
                         title: 'Sair da conta',
                         icon: Icons.login_rounded,
                         border: false,
-                        onPress: () {})
+                        onPress: () async {
+                          loading(context);
+                          await store.logout();
+                          Modular.to.pop();
+                          Modular.to.pushNamed(Modular.initialRoute);
+                        })
                   ]),
                 ),
               ),

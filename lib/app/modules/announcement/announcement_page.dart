@@ -3,6 +3,7 @@ import 'package:buscalar/app/classes/Immobile.dart';
 import 'package:buscalar/app/components/alert_dialog.dart';
 import 'package:buscalar/app/components/loading.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/announcement/announcement_store.dart';
 import 'package:flutter/material.dart';
@@ -34,35 +35,39 @@ class AnnouncementPageState extends State<AnnouncementPage> {
         iconTheme: IconThemeData(color: Color(0xFF930000)),
         elevation: 0,
         actions: [
-          store.immobile.userId == '1'
-              ? IconButton(
-                  onPressed: () {
-                    Modular.to
-                        .pushNamed('/register', arguments: store.immobile);
-                  },
-                  icon: Icon(Icons.edit),
-                  color: Color(0xFF930000),
-                )
-              : Container(),
-          store.immobile.userId == '1'
-              ? IconButton(
-                  onPressed: () async {
-                    alertDialog(
-                        context,
-                        Icons.delete_forever,
-                        'Você está prestes a excluir este anúncio',
-                        'Isso excluirá seu anuncio do Buscalar, tem certeza?',
-                        'Excluir', () async {
-                      await Database()
-                          .deleteImmobile(store.immobile.id.toString());
-                      Modular.to.pop();
-                      Modular.to.pushNamed(Modular.initialRoute);
-                    });
-                  },
-                  icon: Icon(Icons.delete),
-                  color: Color(0xFF930000),
-                )
-              : Container(),
+          Observer(builder: (context) {
+            return store.immobile.userId == store.userId
+                ? IconButton(
+                    onPressed: () {
+                      Modular.to
+                          .pushNamed('/register', arguments: store.immobile);
+                    },
+                    icon: Icon(Icons.edit),
+                    color: Color(0xFF930000),
+                  )
+                : Container();
+          }),
+          Observer(builder: (context) {
+            return store.immobile.userId == store.userId
+                ? IconButton(
+                    onPressed: () async {
+                      alertDialog(
+                          context,
+                          Icons.delete_forever,
+                          'Você está prestes a excluir este anúncio',
+                          'Isso excluirá seu anuncio do Buscalar, tem certeza?',
+                          'Excluir', () async {
+                        await Database()
+                            .deleteImmobile(store.immobile.id.toString());
+                        Modular.to.pop();
+                        Modular.to.pushNamed('/home');
+                      });
+                    },
+                    icon: Icon(Icons.delete),
+                    color: Color(0xFF930000),
+                  )
+                : Container();
+          }),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.favorite_border),
@@ -293,7 +298,7 @@ class AnnouncementPageState extends State<AnnouncementPage> {
                       ),
                     ),
                     onPressed: () async {
-                      var whatsapp = "+5522981045083";
+                      var whatsapp = store.immobile.numberPhone.toString();
                       var whatsappURl_android =
                           "whatsapp://send?phone=" + whatsapp + "&text=hello";
                       var whatappURL_ios =

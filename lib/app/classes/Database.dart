@@ -6,11 +6,11 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class Database {
+  FirebaseFirestore database = FirebaseFirestore.instance;
   Future<List<Immobile>> get getAllImmobiles async {
     List<Immobile> immobiles = [];
 
-    final snapshot =
-        await FirebaseFirestore.instance.collection('immobile').get();
+    final snapshot = await database.collection('immobile').get();
 
     for (var doc in snapshot.docs) {
       var data = doc.data();
@@ -44,43 +44,39 @@ class Database {
   }
 
   Future<void> addImmobile(immobile) async {
-    await FirebaseFirestore.instance.collection('immobile').add(immobile);
+    await database.collection('immobile').add(immobile);
   }
 
   Future<void> updateImmobile(immobile, String id) async {
-    await FirebaseFirestore.instance
-        .collection('immobile')
-        .doc(id)
-        .update(immobile);
+    await database.collection('immobile').doc(id).update(immobile);
   }
 
   Future<void> deleteImmobile(String id) async {
-    await FirebaseFirestore.instance.collection('immobile').doc(id).delete();
+    await database.collection('immobile').doc(id).delete();
   }
 
   void getImmobile(String id) {
-    FirebaseFirestore.instance.collection('immobile').doc(id).get();
+    database.collection('immobile').doc(id).get();
   }
 
   void getAllUsers() {
-    FirebaseFirestore.instance.collection('users').get();
+    database.collection('users').get();
   }
 
-  void addUser(Map<String, dynamic> user) {
-    FirebaseFirestore.instance.collection('users').add(user);
+  void addUser(user) {
+    database.collection('users').add(user);
   }
 
   void deleteUser(String id) {
-    FirebaseFirestore.instance.collection('users').doc(id).delete();
+    database.collection('users').doc(id).delete();
   }
 
   void updateUser(String id, Map<String, dynamic> user) {
-    FirebaseFirestore.instance.collection('users').doc(id).update(user);
+    database.collection('users').doc(id).update(user);
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> getUser(String email) {
-    var teste = FirebaseFirestore.instance.collection('users').doc(email).get();
-    return teste;
+  Future<QuerySnapshot<Map<String, dynamic>>> getUser(String email) {
+    return database.collection('users').where('email', isEqualTo: email).get();
   }
 
   Future<String> uploadImage(XFile image) async {

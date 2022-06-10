@@ -1,3 +1,4 @@
+import 'package:buscalar/app/repositories/user_local_storage_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:path/path.dart';
 
@@ -19,8 +20,10 @@ class RegisterAnnouncementStore = _RegisterAnnouncementStoreBase
 
 abstract class _RegisterAnnouncementStoreBase with Store {
   final Immobile? immobile;
+  final UserLocalStorageStore userLocalStorageStore = UserLocalStorageStore();
 
   _RegisterAnnouncementStoreBase(@Data this.immobile) {
+    loadUserLocalStorage();
     if (immobile != null) {
       setImmobile();
     }
@@ -101,6 +104,12 @@ abstract class _RegisterAnnouncementStoreBase with Store {
   void setCep(String? cep) {
     this.cep = cep;
     getInformationFurCep(this.cep);
+  }
+
+  Future<void> loadUserLocalStorage() async {
+    var user = await userLocalStorageStore.get();
+    setUserId(user.keys.first);
+    setNumberPhone(user.values.first['phoneNumber']);
   }
 
   @action
@@ -193,8 +202,8 @@ abstract class _RegisterAnnouncementStoreBase with Store {
       area,
       numberGarage,
       description,
-      '22 9900-0000',
-      '1',
+      numberPhone,
+      userId,
       price,
     );
   }

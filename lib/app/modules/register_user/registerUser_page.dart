@@ -1,4 +1,5 @@
 import 'package:buscalar/app/components/input.dart';
+import 'package:buscalar/app/components/loading.dart';
 import 'package:buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:buscalar/app/modules/register_user/registerUser_store.dart';
@@ -66,8 +67,11 @@ class RegisterUserPageState extends State<RegisterUserPage> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                     ),
-                    onPressed: () {
-                      store.registerUser();
+                    onPressed: () async {
+                      loading(context);
+                      await store.registerUser();
+                      Modular.to.pop();
+                      Modular.to.pop();
                     },
                     child: Text('Cadastrar-se',
                         style: TextStyle(
