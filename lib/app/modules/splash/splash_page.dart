@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/modules/splash/splash_store.dart';
+import 'package:Buscalar/app/modules/splash/splash_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {
@@ -18,8 +19,8 @@ class SplashPageState extends State<SplashPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
-        child: Lottie.asset(
-          'assets/animation-splash.json',
+        child: SvgPicture.asset(
+          'assets/icon.svg',
           width: MediaQuery.of(context).size.width / 2.5,
           height: MediaQuery.of(context).size.width / 2.5,
         ),

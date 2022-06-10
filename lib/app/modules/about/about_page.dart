@@ -1,7 +1,7 @@
-import 'package:buscalar/app/components/navbar.dart';
-import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:Buscalar/app/components/navbar.dart';
+import 'package:Buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/modules/about/about_store.dart';
+import 'package:Buscalar/app/modules/about/about_store.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget {

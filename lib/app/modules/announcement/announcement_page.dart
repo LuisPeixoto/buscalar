@@ -1,11 +1,11 @@
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/Immobile.dart';
-import 'package:buscalar/app/components/alert_dialog.dart';
-import 'package:buscalar/app/components/loading.dart';
-import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/components/alert_dialog.dart';
+import 'package:Buscalar/app/components/loading.dart';
+import 'package:Buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/modules/announcement/announcement_store.dart';
+import 'package:Buscalar/app/modules/announcement/announcement_store.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 

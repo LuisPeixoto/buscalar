@@ -1,11 +1,11 @@
-import 'package:buscalar/app/components/loading.dart';
-import 'package:buscalar/app/components/navbar.dart';
-import 'package:buscalar/app/components/card-item.dart';
-import 'package:buscalar/app/components/list-item.dart';
-import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:Buscalar/app/components/loading.dart';
+import 'package:Buscalar/app/components/navbar.dart';
+import 'package:Buscalar/app/components/card-item.dart';
+import 'package:Buscalar/app/components/list-item.dart';
+import 'package:Buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/modules/user_profile/userProfile_store.dart';
+import 'package:Buscalar/app/modules/user_profile/userProfile_store.dart';
 import 'package:flutter/material.dart';
 
 class UserProfilePage extends StatefulWidget {

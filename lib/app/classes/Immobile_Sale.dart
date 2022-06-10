@@ -1,4 +1,4 @@
-import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
 
 class Immobile_Sale extends Immobile {
   double price_total;

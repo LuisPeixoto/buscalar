@@ -1,4 +1,4 @@
-import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';

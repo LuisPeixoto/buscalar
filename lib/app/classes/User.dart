@@ -1,6 +1,6 @@
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/Immobile.dart';
-import 'package:buscalar/app/services/auth_store.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/services/auth_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class User {

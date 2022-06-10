@@ -1,6 +1,6 @@
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/Immobile.dart';
-import 'package:buscalar/app/repositories/user_local_storage_store.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/repositories/user_local_storage_store.dart';
 import 'package:mobx/mobx.dart';
 
 part 'userProfile_store.g.dart';

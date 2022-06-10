@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart' as http;

@@ -1,5 +1,5 @@
-import 'package:buscalar/app/modules/announcement/announcement_page.dart';
-import 'package:buscalar/app/modules/announcement/announcement_store.dart';
+import 'package:Buscalar/app/modules/announcement/announcement_page.dart';
+import 'package:Buscalar/app/modules/announcement/announcement_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AnnouncementModule extends Module {

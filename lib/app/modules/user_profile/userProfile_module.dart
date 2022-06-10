@@ -1,5 +1,5 @@
-import 'package:buscalar/app/modules/user_profile/userProfile_page.dart';
-import 'package:buscalar/app/modules/user_profile/userProfile_store.dart';
+import 'package:Buscalar/app/modules/user_profile/userProfile_page.dart';
+import 'package:Buscalar/app/modules/user_profile/userProfile_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class UserProfileModule extends Module {

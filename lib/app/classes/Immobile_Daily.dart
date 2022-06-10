@@ -1,4 +1,5 @@
-import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
 
 class Immobile_Daily extends Immobile {
   double priceDay;

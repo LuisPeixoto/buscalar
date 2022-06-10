@@ -1,5 +1,5 @@
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 

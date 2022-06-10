@@ -1,6 +1,6 @@
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/User.dart' as user;
-import 'package:buscalar/app/repositories/user_local_storage_store.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/User.dart' as user;
+import 'package:Buscalar/app/repositories/user_local_storage_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';

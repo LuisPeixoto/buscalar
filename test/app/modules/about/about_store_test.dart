@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:buscalar/app/modules/about/about_store.dart';
- 
+import 'package:Buscalar/app/modules/about/about_store.dart';
+
 void main() {
   late AboutStore store;
 

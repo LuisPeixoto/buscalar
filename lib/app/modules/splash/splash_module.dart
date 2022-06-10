@@ -1,5 +1,5 @@
-import 'package:buscalar/app/modules/splash/splash_page.dart';
-import 'package:buscalar/app/modules/splash/splash_store.dart';
+import 'package:Buscalar/app/modules/splash/splash_page.dart';
+import 'package:Buscalar/app/modules/splash/splash_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class SplashModule extends Module {

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:buscalar/app/modules/register_user/registerUser_store.dart';
+import 'package:Buscalar/app/modules/register_user/registerUser_store.dart';
 
 void main() {
   late RegisterUserStore store;

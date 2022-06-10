@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:buscalar/app/components/button_small.dart';
-import 'package:buscalar/app/components/input.dart';
-import 'package:buscalar/app/components/loading.dart';
-import 'package:buscalar/app/components/select.dart';
-import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:Buscalar/app/components/button_small.dart';
+import 'package:Buscalar/app/components/input.dart';
+import 'package:Buscalar/app/components/loading.dart';
+import 'package:Buscalar/app/components/select.dart';
+import 'package:Buscalar/app/components/status-bar-style.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/modules/register_announcement/register_announcement_store.dart';
+import 'package:Buscalar/app/modules/register_announcement/register_announcement_store.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

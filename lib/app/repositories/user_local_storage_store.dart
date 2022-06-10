@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:buscalar/app/classes/User.dart';
-import 'package:buscalar/app/utils/path_provider.dart';
+import 'package:Buscalar/app/classes/User.dart';
+import 'package:Buscalar/app/utils/path_provider.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;

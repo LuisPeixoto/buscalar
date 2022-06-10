@@ -1,4 +1,4 @@
-import 'package:buscalar/app/classes/User.dart';
+import 'package:Buscalar/app/classes/User.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_store.g.dart';

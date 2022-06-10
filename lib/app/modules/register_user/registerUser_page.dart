@@ -1,8 +1,8 @@
-import 'package:buscalar/app/components/input.dart';
-import 'package:buscalar/app/components/loading.dart';
-import 'package:buscalar/app/components/status-bar-style.dart';
+import 'package:Buscalar/app/components/input.dart';
+import 'package:Buscalar/app/components/loading.dart';
+import 'package:Buscalar/app/components/status-bar-style.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:buscalar/app/modules/register_user/registerUser_store.dart';
+import 'package:Buscalar/app/modules/register_user/registerUser_store.dart';
 import 'package:flutter/material.dart';
 
 class RegisterUserPage extends StatefulWidget {

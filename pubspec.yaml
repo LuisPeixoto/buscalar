@@ -1,4 +1,4 @@
-name: buscalar
+name: Buscalar
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -90,7 +90,7 @@ flutter:
     - assets/point-rent.svg
     - assets/point-daily.svg
     - assets/loading.json
-    - assets/animation-splash.json
+    - assets/icon.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

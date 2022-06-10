@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:buscalar/app/components/button-search-input.dart';
-import 'package:buscalar/app/components/inputSearchHome.dart';
-import 'package:buscalar/app/components/loading.dart';
-import 'package:buscalar/app/components/navbar.dart';
-import 'package:buscalar/app/components/point.dart';
-import 'package:buscalar/app/components/status-bar-style.dart';
-import 'package:buscalar/app/modules/home/home_store.dart';
+import 'package:Buscalar/app/components/button-search-input.dart';
+import 'package:Buscalar/app/components/inputSearchHome.dart';
+import 'package:Buscalar/app/components/loading.dart';
+import 'package:Buscalar/app/components/navbar.dart';
+import 'package:Buscalar/app/components/point.dart';
+import 'package:Buscalar/app/components/status-bar-style.dart';
+import 'package:Buscalar/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';

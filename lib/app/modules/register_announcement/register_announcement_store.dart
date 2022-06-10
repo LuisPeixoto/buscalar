@@ -1,11 +1,11 @@
-import 'package:buscalar/app/repositories/user_local_storage_store.dart';
+import 'package:Buscalar/app/repositories/user_local_storage_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:path/path.dart';
 
 import 'dart:io';
-import 'package:buscalar/app/classes/Database.dart';
-import 'package:buscalar/app/classes/Immobile.dart';
-import 'package:buscalar/app/classes/Immobile_Daily.dart';
+import 'package:Buscalar/app/classes/Database.dart';
+import 'package:Buscalar/app/classes/Immobile.dart';
+import 'package:Buscalar/app/classes/Immobile_Daily.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
