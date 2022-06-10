@@ -45,5 +45,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+
 # Google services
 android/app/google-services.json
+
+
+.directory
