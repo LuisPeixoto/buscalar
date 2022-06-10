@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:buscalar/app/modules/login/login_store.dart';
+import 'package:Buscalar/app/modules/login/login_store.dart';
 
 void main() {
   late LoginStore store;
@@ -9,8 +9,8 @@ void main() {
   });
 
   test('increment count', () async {
-    expect(store.value, equals(0));
-    store.increment();
-    expect(store.value, equals(1));
+    expect(store.email, equals(0));
+    store.login();
+    expect(store.email, equals(1));
   });
 }

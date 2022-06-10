@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:buscalar/app/modules/register_announcement/register_announcement_store.dart';
+import 'package:Buscalar/app/modules/about/about_store.dart';
 
 void main() {
-  late RegisterAnnouncementStore store;
+  late AboutStore store;
 
   setUpAll(() {
-    store = RegisterAnnouncementStore();
+    store = AboutStore();
   });
 
   test('increment count', () async {

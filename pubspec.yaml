@@ -1,4 +1,4 @@
-name: buscalar
+name: Buscalar
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -39,6 +39,19 @@ dependencies:
   flutter_mobx: ^2.0.4
   flutter_map: ^0.14.0
   latlong2: ^0.8.1
+  firebase_core: ^1.15.0
+  cloud_firestore: ^3.1.13
+  http: ^0.13.4
+  firebase_storage: ^10.2.15
+  image_picker: ^0.8.5
+  image: ^3.1.3
+  firebase_auth: ^3.3.18
+  url_launcher: ^6.0.9
+  flutter_svg: ^1.0.3
+  location: ^4.4.0
+  lottie: ^1.3.0
+  hive: ^2.2.1
+  path_provider: ^2.0.10
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +84,13 @@ flutter:
     - assets/example1.png
     - assets/example2.png
     - assets/example3.png
+    - assets/uenf.png
+    - assets/cc.png
+    - assets/point-sale.svg
+    - assets/point-rent.svg
+    - assets/point-daily.svg
+    - assets/loading.json
+    - assets/icon.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,7 +1,7 @@
-import 'package:buscalar/app/modules/login/login_page.dart';
-import 'package:buscalar/app/modules/login/login_store.dart';
-import 'package:buscalar/app/modules/home/home_page.dart';
-import 'package:buscalar/app/modules/home/home_store.dart';
+import 'package:Buscalar/app/modules/login/login_page.dart';
+import 'package:Buscalar/app/modules/login/login_store.dart';
+import 'package:Buscalar/app/modules/home/home_page.dart';
+import 'package:Buscalar/app/modules/home/home_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class LoginModule extends Module {
