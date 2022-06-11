@@ -1,1 +1,8 @@
 theme: jekyll-theme-cayman
+title: Buscalar
+colors:
+    gradient_left: "#930000"
+    gradient_right: "#930000"
+    header: "#fff"
+    link: "#930000" # this default to gradient_color
+    section_title: "#930000" # this default to gradient_color
