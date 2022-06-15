@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     mapController = MapController();
-    store.getLocationCurrent(mapController);
+    //store.getLocationCurrent(mapController);
   }
 
   @override
