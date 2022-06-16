@@ -17,7 +17,6 @@ abstract class _AuthStoreBase with Store {
   @action
   Future<void> authentication(String email, String password) async {
     try {
-      //value.docs[0].data()
       auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) {
